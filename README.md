@@ -8,7 +8,7 @@ import datetime
 from urllib import parse, request
 import re
 
-bot = commands.Bot(command_prefix='.', description="This is a useless Bot")
+bot = commands.Bot(command_prefix='.', description="This is a useless Bot", help_command=None)
 
 #Text Commands
 
@@ -65,11 +65,17 @@ async def HeroFighte(ctx):
 #Name Based Commands
 
 @bot.command()
-async def warn(ctx,user:discord.User, *, arg):
+async def warn(ctx,user:discord.Member, *, arg): 
     await ctx.send(f"{user.name} has been warned. Reason: {arg}")
 
 @bot.command()
-async def marry(ctx,user:discord.Member):
+async def marry(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("You need to marry with someone right? Tag that one!")
+        return
+    if user==ctx.author:
+        await ctx.send("You sadly cant marry yourself...")
+        return
 
     embed = discord.Embed(title=f"{ctx.author} marries to {user.name}", description="Ahhh... So cute! I'm blushing")
     embed.set_image(url="https://media.giphy.com/media/13V4HjgAOIhvDq/giphy.gif")
@@ -77,8 +83,11 @@ async def marry(ctx,user:discord.Member):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def kill(ctx,user:discord.Member):
-
+async def kill(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("You must mention your target")
+        return
+   
     embed = discord.Embed(title=f"{ctx.author} kills {user.name}", description="Bam Bam Bam")
     embed.set_image(url="https://i.kym-cdn.com/photos/images/original/000/978/568/24f.gif")
 
@@ -109,7 +118,13 @@ async def declarecommunism(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def hug(ctx,user:discord.Member):
+async def hug(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("You can't hug air. Tag our lucky boy UwU")
+        return
+    if user==ctx.author:
+        await ctx.send("You cant hug yourself. but your left hand is avaible")
+        return
     
     embed = discord.Embed(title=f"{ctx.author} hugs {user.name}", description="Ain't this cute? I envy them...")
     embed.set_image(url="https://data.whicdn.com/images/125740919/original.gif")
@@ -117,13 +132,45 @@ async def hug(ctx,user:discord.Member):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def hack(ctx,user:discord.Member):
-
+async def hack(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("Target practice? Tag someone!")
+        return
+   
     embed = discord.Embed(title=f"{ctx.author} hacks {user.name}", description="Damn man homework folder looks kinda sus...")
     embed.set_image(url="https://i.pinimg.com/originals/62/c9/3a/62c93a4cf6462f54fdea6d735d927f9c.gif")    
 
     await ctx.send(embed=embed)
 
+@bot.command()
+async def bully(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("ummm... Ever heard of mentioning other users?")
+        return
+    if user==ctx.author:
+        await ctx.send("Why would you want to bully yourself? Jut look at the mirror")
+        return
+
+    embed = discord.Embed(title=f"{ctx.author} bullies {user.name}")
+    embed.set_image(url="https://i.pinimg.com/736x/73/08/39/730839953404c1d46a158f12c5c4f78f.jpg")
+
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def suck(ctx):
+
+    embed = discord.Embed(title=f"{ctx.author} sucks", description="no not like that you perverted!")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/757701650537250957/780183991474454528/popsicleporn.gif")
+
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def çay(ctx):
+
+    embed = discord.Embed(title=f"{ctx.author} made tea and grabs a glass of it. Anyone else wants?", description="tea is great")
+    embed.set_image(url="https://i.pinimg.com/originals/fd/35/6b/fd356b3bf3fe3a3839efa654aaf52d61.gif")
+
+    await ctx.send(embed=embed)
 
 #bot events
 
@@ -131,4 +178,18 @@ async def hack(ctx,user:discord.Member):
 async def on_ready():
     print('I am ready sire')
 
+#help command
+
+@bot.group(invoke_without_command=True)
+async def help(ctx):
+
+    embed = discord.Embed(title="Patri Bot", description="A bot made for fun")
+    embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
+    
+    embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
+    embed.add_field(name="Text based commands", value="howtobecomehappy, sa, ping")
+    embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, lewds, marry, suck, tsun, waifu, warn, çay")
+    embed.add_field(name="Important Commands", value="info, HeroFightie")
+    
+    await ctx.send(embed=embed)
 bot.run('Token')
