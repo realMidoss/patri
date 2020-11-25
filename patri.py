@@ -8,7 +8,7 @@ import datetime
 from urllib import parse, request
 import re
 
-bot = commands.Bot(command_prefix='.', description="This is a useless Bot", help_command=None)
+bot = commands.Bot(command_prefix='patri ', help_command=None)
 
 #Text Commands
 
@@ -87,7 +87,15 @@ async def kill(ctx,user:discord.Member = None):
     if user is None:
         await ctx.send("You must mention your target")
         return
-   
+
+    if user==ctx.author:
+        embed = discord.Embed(title=f"{ctx.author} commited suicide ", description="F")
+        embed.set_image(url="https://data.whicdn.com/images/89750923/original.gif")  
+        
+        await ctx.send(embed=embed)
+
+        return
+    
     embed = discord.Embed(title=f"{ctx.author} kills {user.name}", description="Bam Bam Bam")
     embed.set_image(url="https://i.kym-cdn.com/photos/images/original/000/978/568/24f.gif")
 
@@ -136,6 +144,9 @@ async def hack(ctx,user:discord.Member = None):
     if user is None:
         await ctx.send("Target practice? Tag someone!")
         return
+    if user==ctx.author:
+        await ctx.send("WTF? Are you stupid? You can't hack yourself!")
+        return
    
     embed = discord.Embed(title=f"{ctx.author} hacks {user.name}", description="Damn man homework folder looks kinda sus...")
     embed.set_image(url="https://i.pinimg.com/originals/62/c9/3a/62c93a4cf6462f54fdea6d735d927f9c.gif")    
@@ -148,7 +159,7 @@ async def bully(ctx,user:discord.Member = None):
         await ctx.send("ummm... Ever heard of mentioning other users?")
         return
     if user==ctx.author:
-        await ctx.send("Why would you want to bully yourself? Jut look at the mirror")
+        await ctx.send("Why would you want to bully yourself? Just look at the mirror")
         return
 
     embed = discord.Embed(title=f"{ctx.author} bullies {user.name}")
@@ -183,13 +194,14 @@ async def on_ready():
 @bot.group(invoke_without_command=True)
 async def help(ctx):
 
-    embed = discord.Embed(title="Patri Bot", description="A bot made for fun")
+    embed = discord.Embed(title="Patri Bot", description="This is a basic practice mod, mainly for GAM discord. Creator: Midoss")
     embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Text based commands", value="howtobecomehappy, sa, ping")
     embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, lewds, marry, suck, tsun, waifu, warn, çay")
-    embed.add_field(name="Important Commands", value="info, HeroFightie")
+    embed.add_field(name="Important Commands", value="info, HeroFighte")
     
     await ctx.send(embed=embed)
+
 bot.run('Token')
