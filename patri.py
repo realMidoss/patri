@@ -14,7 +14,7 @@ bot = commands.Bot(command_prefix='patri ', help_command=None)
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send('pong')
+    await ctx.send(':ping_pong: Pong!')
 
 @bot.command()
 async def sa(ctx):
