@@ -1,6 +1,4 @@
 # patri
-# Patri Bot
-
 import discord
 from discord.ext import commands
 import datetime
@@ -10,11 +8,18 @@ import re
 
 bot = commands.Bot(command_prefix='patri ', help_command=None)
 
+#bot events
+
+@bot.event
+async def on_ready():
+    await bot.change_presence(activity=discord.Game(name="patri help"))
+    print('I am redy')
+
 #Text Commands
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(':ping_pong: Pong!')
+    await ctx.send(f':ping_pong: Pong! {round(bot.latency * 1000)} ms')
 
 @bot.command()
 async def sa(ctx):
@@ -183,12 +188,6 @@ async def çay(ctx):
 
     await ctx.send(embed=embed)
 
-#bot events
-
-@bot.event
-async def on_ready():
-    print('I am ready sire')
-
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -198,9 +197,9 @@ async def help(ctx):
     embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Text based commands", value="howtobecomehappy, sa, ping")
+    embed.add_field(name="Text based commands", value="howtobecomehappy, sa")
     embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, lewds, marry, suck, tsun, waifu, warn, çay")
-    embed.add_field(name="Important Commands", value="info, HeroFighte")
+    embed.add_field(name="Important Commands", value="HeroFighte, ping, info")
     
     await ctx.send(embed=embed)
 
