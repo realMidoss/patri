@@ -2,11 +2,10 @@
 import discord
 from discord.ext import commands
 import datetime
-
 from urllib import parse, request
 import re
 
-bot = commands.Bot(command_prefix='patri ', help_command=None)
+bot = commands.Bot(command_prefix='patri ', help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
 #bot events
 
@@ -32,6 +31,10 @@ async def waifu(ctx):
 @bot.command()
 async def howtobecomehappy(ctx):
     await ctx.send('be happy')
+
+@bot.command()
+async def say(ctx, *, arg):
+    await ctx.send(f'{arg}')
 
 #Embed Commands
 
@@ -173,6 +176,20 @@ async def bully(ctx,user:discord.Member = None):
     await ctx.send(embed=embed)
 
 @bot.command()
+async def kiss(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("Kiss what? More likely who? :kekw: Will you kiss air, you poor thing?")
+        return
+    if user==ctx.author:
+        await ctx.send("OMG did you just try to kiss yourself :kekw:")
+        return
+
+    embed = discord.Embed(title=f"{ctx.author} kissed {user.name}...", description="Ahh young love...")
+    embed.set_image(url="https://media3.giphy.com/media/12VXIxKaIEarL2/giphy.gif")
+
+    await ctx.send(embed=embed)
+
+@bot.command()
 async def suck(ctx):
 
     embed = discord.Embed(title=f"{ctx.author} sucks", description="no not like that you perverted!")
@@ -197,8 +214,8 @@ async def help(ctx):
     embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Text based commands", value="howtobecomehappy, sa")
-    embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, lewds, marry, suck, tsun, waifu, warn, çay")
+    embed.add_field(name="Text based commands", value="howtobecomehappy, sa, say")
+    embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, suck, tsun, waifu, warn, çay")
     embed.add_field(name="Important Commands", value="HeroFighte, ping, info")
     
     await ctx.send(embed=embed)
