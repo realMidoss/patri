@@ -1,4 +1,3 @@
-# patri
 import discord
 from discord.ext import commands
 import datetime
@@ -25,7 +24,9 @@ async def question(ctx, *, arg):
         "hell no",
         "Maybe",
         "Mayhabs",
-        "Why not?",]
+        "Why not?",
+        "IDK",
+        "How the fuck I can know?",]
     await ctx.send(random.choice(variable))
 
 @bot.command()
@@ -286,7 +287,7 @@ async def nitro(ctx):
     embed.set_image(url="https://i.ytimg.com/vi/iuK5d-9zSDY/maxresdefault.jpg")
 
     await ctx.send(embed=embed)
-       
+    
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -296,12 +297,10 @@ async def help(ctx):
     embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Text based commands", value="answer, howtobecomehappy, sa, say, question")
+    embed.add_field(name="Text based commands", value="howtobecomehappy, sa, say, question")
     embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, pat, suck, tsun, waifu, warn, çay")
     embed.add_field(name="Important Commands", value="HeroFighte, ping, info")
     
     await ctx.send(embed=embed)
 
-bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.CfUCd63--LBCHm-LHFwwL5Y0xcw')
-
-    bot.run('TOKEN')
+bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
