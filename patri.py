@@ -4,6 +4,7 @@ from discord.ext import commands
 import datetime
 from urllib import parse, request
 import re
+import random
 
 bot = commands.Bot(command_prefix='patri ', help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
@@ -15,6 +16,17 @@ async def on_ready():
     print('I am redy')
 
 #Text Commands
+
+@bot.command(pass_context=True)
+async def question(ctx, *, arg):
+    variable = [
+        "sure",
+        "yes",
+        "hell no",
+        "Maybe",
+        "Mayhabs",
+        "Why not?",]
+    await ctx.send(random.choice(variable))
 
 @bot.command()
 async def ping(ctx):
@@ -84,9 +96,16 @@ async def marry(ctx,user:discord.Member = None):
     if user==ctx.author:
         await ctx.send("You sadly cant marry yourself...")
         return
+    
+    marriage = [
+    "https://media.giphy.com/media/13V4HjgAOIhvDq/giphy.gif",
+    "https://data.whicdn.com/images/282240022/original.gif",
+    "https://pa1.narvii.com/6220/724eef7024976360a3d683bed7531b951fefffb0_00.gif",
+    "https://i.pinimg.com/originals/0e/5a/e8/0e5ae8c0c07c847e1f8c4d1c8665872f.gif",
+    "https://pa1.narvii.com/6505/af2b8c242ffdb5300dd1bf83a2587e44b1d12298_00.gif",]
 
     embed = discord.Embed(title=f"{ctx.author} marries to {user.name}", description="Ahhh... So cute! I'm blushing")
-    embed.set_image(url="https://media.giphy.com/media/13V4HjgAOIhvDq/giphy.gif")
+    embed.set_image(url=random.choice(marriage))
 
     await ctx.send(embed=embed)
 
@@ -97,15 +116,26 @@ async def kill(ctx,user:discord.Member = None):
         return
 
     if user==ctx.author:
+        
+        intihar = [
+        "https://data.whicdn.com/images/89750923/original.gif",
+        "https://64.media.tumblr.com/130a00d77bd535456e4518cf1f9397f9/tumblr_pdf9aaSUmM1xci9v9o2_500.gif",
+        "https://data.whicdn.com/images/251664843/original.gif",]
+
         embed = discord.Embed(title=f"{ctx.author} commited suicide ", description="F")
-        embed.set_image(url="https://data.whicdn.com/images/89750923/original.gif")  
+        embed.set_image(url=random.choice(intihar))  
         
         await ctx.send(embed=embed)
 
         return
     
+    killv = [
+    "https://i.kym-cdn.com/photos/images/original/000/978/568/24f.gif",
+    "https://i.pinimg.com/originals/d4/bb/e2/d4bbe21cfe5993e13173c4692db757d0.gif",
+    "https://i.kym-cdn.com/photos/images/newsfeed/000/637/941/20b.gif",] 
+
     embed = discord.Embed(title=f"{ctx.author} kills {user.name}", description="Bam Bam Bam")
-    embed.set_image(url="https://i.kym-cdn.com/photos/images/original/000/978/568/24f.gif")
+    embed.set_image(url=random.choice(killv)) 
 
     await ctx.send(embed=embed)    
 
@@ -128,8 +158,13 @@ async def bruh(ctx):
 @bot.command()
 async def declarecommunism(ctx):
 
+    komün = [
+    "https://media2.giphy.com/media/RMrNQ0HszuxzmvdBdw/giphy.gif",
+    "https://31.media.tumblr.com/1c34ba04ed84aa28afa59511a1b4f99c/tumblr_inline_np4407k8KS1rfowug_500.gif",
+    "https://pa1.narvii.com/7147/2d29995dcaf867d19fc76e00a2077bb93c2429fdr1-380-335_hq.gif",
+    ]
     embed = discord.Embed(title=f"Stalin would be proud of you comrade {ctx.author}", description="For The Soviet Union!")
-    embed.set_image(url="https://media2.giphy.com/media/RMrNQ0HszuxzmvdBdw/giphy.gif")
+    embed.set_image(url=random.choice(komün)) 
 
     await ctx.send(embed=embed)
 
@@ -142,8 +177,14 @@ async def hug(ctx,user:discord.Member = None):
         await ctx.send("You cant hug yourself. but your left hand is avaible")
         return
     
+    hugv = [
+    "https://data.whicdn.com/images/125740919/original.gif",
+    "https://i.pinimg.com/originals/f2/80/5f/f2805f274471676c96aff2bc9fbedd70.gif",
+    "https://media2.giphy.com/media/l2QDM9Jnim1YVILXa/source.gif",
+    ]
+
     embed = discord.Embed(title=f"{ctx.author} hugs {user.name}", description="Ain't this cute? I envy them...")
-    embed.set_image(url="https://data.whicdn.com/images/125740919/original.gif")
+    embed.set_image(url=random.choice(hugv)) 
 
     await ctx.send(embed=embed)
 
@@ -184,8 +225,16 @@ async def kiss(ctx,user:discord.Member = None):
         await ctx.send("OMG did you just try to kiss yourself :kekw:")
         return
 
+    öp = [
+    "https://media3.giphy.com/media/12VXIxKaIEarL2/giphy.gif",
+    "https://37.media.tumblr.com/7bbfd33feb6d790bb656779a05ee99da/tumblr_mtigwpZmhh1si4l9vo1_500.gif",
+    "https://data.whicdn.com/images/239776661/original.gif",
+    "https://i.pinimg.com/originals/f8/e8/8e/f8e88eccd2737d5805d645a85d1dbc0f.gif",
+    "https://i.pinimg.com/originals/21/82/d8/2182d81bc459732fdf9bf94d1dd068c4.gif",
+    ]
+
     embed = discord.Embed(title=f"{ctx.author} kissed {user.name}...", description="Ahh young love...")
-    embed.set_image(url="https://media3.giphy.com/media/12VXIxKaIEarL2/giphy.gif")
+    embed.set_image(url=random.choice(öp)) 
 
     await ctx.send(embed=embed)
 
@@ -205,6 +254,39 @@ async def çay(ctx):
 
     await ctx.send(embed=embed)
 
+@bot.command()
+async def pat(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("Pat what? Mention someone")
+        return
+    
+    if user==ctx.author:
+        embed = discord.Embed(title=f"{ctx.author} pats theirselves... It's just sad")
+        embed.set_image(url="https://pa1.narvii.com/6400/6a38438c39e60789ac39cfd7340acd868baeac90_00.gif")
+        await ctx.send(embed=embed)
+        return
+
+    patv = [
+    "https://i.imgur.com/LUChfFZ.gif",
+    "https://66.media.tumblr.com/d743a5e5ecc65be5cb6ac8de7978fb22/tumblr_pfyit1ofSu1th206io1_500.gif",
+    "https://i.imgur.com/LUypjw3.gif",
+    "https://i.pinimg.com/originals/ec/b8/7f/ecb87fb2827a022884d5165046f6608a.gif",
+    "https://thumbs.gfycat.com/ImpurePleasantArthropods-small.gif",
+    ]
+
+    embed = discord.Embed(title=f"{ctx.author} pats, {user.name}", description="pat pat")
+    embed.set_image(url=random.choice(patv))
+
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def nitro(ctx):
+    
+    embed = discord.Embed(title="Here take this nitro", description="It's on me!")
+    embed.set_image(url="https://i.ytimg.com/vi/iuK5d-9zSDY/maxresdefault.jpg")
+
+    await ctx.send(embed=embed)
+       
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -214,10 +296,12 @@ async def help(ctx):
     embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Text based commands", value="howtobecomehappy, sa, say")
-    embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, suck, tsun, waifu, warn, çay")
+    embed.add_field(name="Text based commands", value="answer, howtobecomehappy, sa, say, question")
+    embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, pat, suck, tsun, waifu, warn, çay")
     embed.add_field(name="Important Commands", value="HeroFighte, ping, info")
     
     await ctx.send(embed=embed)
+
+bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.CfUCd63--LBCHm-LHFwwL5Y0xcw')
 
     bot.run('TOKEN')
