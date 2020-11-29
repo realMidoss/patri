@@ -7,6 +7,24 @@ import random
 
 bot = commands.Bot(command_prefix='patri ', help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
+#Poll Komutu 
+
+
+@bot.command()
+async def poll(ctx, *, arg):
+    
+    yas = '✔️' 
+    idk = '♻️'
+    nay = '❌'
+    
+    embed = discord.Embed(title=f"{arg}")
+    message = await ctx.send(embed=embed)
+    
+    await message.add_reaction(yas)
+    await message.add_reaction(idk)
+    await message.add_reaction(nay)
+
+
 #bot events
 
 @bot.event
@@ -297,10 +315,33 @@ async def help(ctx):
     embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Text based commands", value="howtobecomehappy, sa, say, question")
-    embed.add_field(name="Fun Commands", value="bruh, bully, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, pat, suck, tsun, waifu, warn, çay")
-    embed.add_field(name="Important Commands", value="HeroFighte, ping, info")
+    embed.add_field(name="Moderatiob commands", value="IDK that much discord.py")
+    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, pat, sa, say, suck, tsun, waifu, warn, question")
+    embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
+    await ctx.send(embed=embed)
+
+#easter eggs (Burdan sonrası Türklere hitap etmektedir)
+
+@bot.group(invoke_without_command=True)
+async def yumurtalar(ctx):
+
+    embed = discord.Embed(title="Yüce Türk Milletine Armağan Olsun", description="Sürpriz Yumurta Komutları")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/770041004073418822.png?v=1")
+    
+    embed.add_field(name="yumurtalar", value="Bu menüyü açar", inline=False)
+    embed.add_field(name="Ağlama Komutları", value="f35, ")
+    embed.add_field(name="Kategori 2", value="bekleniyor")
+    embed.add_field(name="Kategori 3", value="bekleniyor")
+    
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def f35(ctx):
+
+    embed = discord.Embed(title=f"{ctx.author} f35lere bakıyor ve ağlıyor")
+    embed.set_image(url="https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/12/10/11/45/resized_b3d5f-f1d85093mansetc.jpg")
+
     await ctx.send(embed=embed)
 
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
