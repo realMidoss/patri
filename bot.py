@@ -315,7 +315,7 @@ async def help(ctx):
     embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Moderatiob commands", value="IDK that much discord.py")
+    embed.add_field(name="Moderation commands", value="IDK that much discord.py")
     embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, pat, sa, say, suck, tsun, waifu, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
