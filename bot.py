@@ -312,7 +312,7 @@ async def nitro(ctx):
 async def help(ctx):
 
     embed = discord.Embed(title="Patri Bot", description="This is a basic practice mod, mainly for GAM discord. Creator: Midoss")
-    embed.set_thumbnail(url="https://assets.stickpng.com/images/5cb78f9c7ff3656569c8cec2.png")
+    embed.set_thumbnail(url="https://www.logaster.com/blog/wp-content/uploads/2018/05/LogoMakr.png")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation commands", value="IDK that much discord.py")
