@@ -326,12 +326,12 @@ async def help(ctx):
 @bot.group(invoke_without_command=True)
 async def yumurtalar(ctx):
 
-    embed = discord.Embed(title="Yüce Türk Milletine Armağan Olsun", description="Sürpriz Yumurta Komutları")
+    embed = discord.Embed(title="Yüce Türk Milletine Armağan olsun", description="Sürpriz Yumurta Komutları")
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/770041004073418822.png?v=1")
     
     embed.add_field(name="yumurtalar", value="Bu menüyü açar", inline=False)
     embed.add_field(name="Ağlama Komutları", value="f35, ")
-    embed.add_field(name="Kategori 2", value="bekleniyor")
+    embed.add_field(name="Gır Gır Komutları", value="söv, ")
     embed.add_field(name="Kategori 3", value="bekleniyor")
     
     await ctx.send(embed=embed)
@@ -343,5 +343,28 @@ async def f35(ctx):
     embed.set_image(url="https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/12/10/11/45/resized_b3d5f-f1d85093mansetc.jpg")
 
     await ctx.send(embed=embed)
+
+@bot.command()
+async def söv(ctx, user:discord.Member = None):
+
+    kufurler = [
+    "Senin ben yedi ceddini dere başında sikeyim",
+    "Yedi ceddinin adet suyuna ekmek banayım ",
+    "Senin gibilerin hak ettiği tek yer sikimin ucudur ama kendimi boka bulamak istemiyorum",
+    "Weeb'in oğlu",
+    "Sana açılan ilim irfan yuvalarının menteşelerini sikeyim",
+    "Bacına telif hakkı koyayım",]
+    
+    if user is None:
+        await ctx.send("kime söveyim amk?")
+        return
+
+    if user==ctx.Author:
+        await ctx.send("kendine mi sövüyorsun lan amk salağı :kekw:")
+        return
+
+    await ctx.send({user.name} kufurler)
+
+
 
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
