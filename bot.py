@@ -359,11 +359,11 @@ async def söv(ctx, user:discord.Member = None):
         await ctx.send("kime söveyim amk?")
         return
 
-    if user==ctx.Author:
+    if user==ctx.author:
         await ctx.send("kendine mi sövüyorsun lan amk salağı :kekw:")
         return
 
-    await ctx.send({user.name} kufurler)
+    await ctx.send(f'{user.name}, {random.choice(kufurler)}')
 
 
 
