@@ -4,6 +4,7 @@ import datetime
 from urllib import parse, request
 import re
 import random
+import asyncio
 
 bot = commands.Bot(command_prefix='patri ', help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
@@ -305,6 +306,35 @@ async def nitro(ctx):
     embed.set_image(url="https://i.ytimg.com/vi/iuK5d-9zSDY/maxresdefault.jpg")
 
     await ctx.send(embed=embed)
+
+@bot.command()
+async def nuke(ctx):
+    
+    yas = '✔️'
+    nay = '❌'
+    
+    message = await ctx.send("Are you sure that you want to use your nukes?")
+    
+    await message.add_reaction(yas)
+    await message.add_reaction(nay)
+    
+    valid_reactions = ['✔️', '❌']
+    
+    def check(reaction, user):
+        return user == ctx.author and str(reaction.emoji) in valid_reactions
+    
+    try:
+     reaction = await bot.wait_for('reaction_add', timeout=10.0, check=check)
+    except asyncio.TimeoutError:
+        await ctx.send("msg")
+    
+
+    if str(reaction.emoji) == yas:
+        embed = discord.Embed(title="Code:87453 Activated, Destruction started...")
+        embed.set_image(url="https://i.gifer.com/3Tt5.gif")
+        return await ctx.send(embed=embed)
+
+    await ctx.send("Cancelled")  
     
 #help command
 
@@ -312,11 +342,11 @@ async def nitro(ctx):
 async def help(ctx):
 
     embed = discord.Embed(title="Patri Bot", description="This is a basic practice mod, mainly for GAM discord. Creator: Midoss")
-    embed.set_thumbnail(url="https://www.logaster.com/blog/wp-content/uploads/2018/05/LogoMakr.png")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation commands", value="IDK that much discord.py")
-    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, pat, sa, say, suck, tsun, waifu, warn, question")
+    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, nuke, pat, sa, say, suck, tsun, waifu, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
     await ctx.send(embed=embed)
@@ -331,7 +361,7 @@ async def yumurtalar(ctx):
     
     embed.add_field(name="yumurtalar", value="Bu menüyü açar", inline=False)
     embed.add_field(name="Ağlama Komutları", value="f35, ")
-    embed.add_field(name="Gır Gır Komutları", value="söv, ")
+    embed.add_field(name="Gır Gır Komutları", value="ayran, çay, söv")
     embed.add_field(name="Kategori 3", value="bekleniyor")
     
     await ctx.send(embed=embed)
@@ -364,6 +394,22 @@ async def söv(ctx, user:discord.Member = None):
         return
 
     await ctx.send(f'{user.name}, {random.choice(kufurler)}')
+
+bot.command()
+async def ayran(ctx):
+
+    ayranv = [
+    "https://upload.wikimedia.org/wikipedia/commons/8/8e/Fresh_ayran.jpg"
+    "https://i.hizliresim.com/YhMHce.jpg",
+    "https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/08/17/01/18/resized_bc21b-b7825c1fshutterstock_343692611custom.jpg",
+    "https://www.formsante.com.tr/wp-content/uploads/2019/04/4-25-e1594291717532.jpg",
+    "https://www.gastrofests.com/wp-content/uploads/2020/07/ayran-840x560.jpg",
+    ]
+
+    embed = discord.Embed(title=f"{ctx.author}, ayran koydu", description="Ooooooh köpüklü köpüklü olsa da içsek")
+    embed.set_image(url=random.choice(ayranv))
+
+    await ctx.send(embed=embed)
 
 
 
