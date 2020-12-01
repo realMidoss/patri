@@ -324,9 +324,9 @@ async def nuke(ctx):
         return user == ctx.author and str(reaction.emoji) in valid_reactions
     
     try:
-        reaction, user = await bot.wait_for('reaction_add', timeout=60.0, check=check)
+        reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
 except asyncio.TimeoutError:
-  await channel.send("msg")
+  await ctx.send("I dont have all day m8")
     
 
     if str(reaction.emoji) == yas:
