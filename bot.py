@@ -322,19 +322,18 @@ async def nuke(ctx):
     
     def check(reaction, user):
         return user == ctx.author and str(reaction.emoji) in valid_reactions
-    
+
     try:
         reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
-except asyncio.TimeoutError:
-  await ctx.send("I dont have all day m8")
+    except asyncio.TimeoutError:
+        await ctx.send("I dont have all day")
     
-
     if str(reaction.emoji) == yas:
-        embed = discord.Embed(title="Code:87453 Activated, Destruction started...")
+        embed = discord.Embed(title="Code:87453 Activated, Destruction stars...")
         embed.set_image(url="https://i.gifer.com/3Tt5.gif")
         return await ctx.send(embed=embed)
 
-    await ctx.send("Cancelled")  
+    await ctx.send("Cancelled") 
     
 #help command
 
