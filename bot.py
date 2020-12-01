@@ -329,7 +329,7 @@ async def nuke(ctx):
         await ctx.send("I dont have all day")
     
     if str(reaction.emoji) == yas:
-        embed = discord.Embed(title="Code:87453 Activated, Destruction stars...")
+        embed = discord.Embed(title="Code:87453 Activated, Destruction starts...")
         embed.set_image(url="https://i.gifer.com/3Tt5.gif")
         return await ctx.send(embed=embed)
 
