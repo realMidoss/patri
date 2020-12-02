@@ -275,6 +275,21 @@ async def çay(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
+async def F(ctx):
+
+    Fv = [
+    "https://i.kym-cdn.com/entries/icons/mobile/000/017/039/pressf.jpg",
+    "https://i.pinimg.com/originals/4c/c5/3a/4cc53a5ae71234a0fd79998a8d2a802f.png",
+    "https://cdn.ebaumsworld.com/thumbs/2019/02/14/060133/85886769/meme-fixed.jpg"
+    ]
+
+    embed = discord.Embed(title="F")
+    embed.set_image(url=random.choice(Fv))
+
+    await ctx.send(embed=embed)
+
+
+@bot.command()
 async def pat(ctx,user:discord.Member = None):
     if user is None:
         await ctx.send("Pat what? Mention someone")
@@ -329,7 +344,7 @@ async def nuke(ctx):
         await ctx.send("I dont have all day")
     
     if str(reaction.emoji) == yas:
-        embed = discord.Embed(title="Code:87453 Activated, Destruction starts...")
+        embed = discord.Embed(title="Code:87453 Activated, Destruction stars...")
         embed.set_image(url="https://i.gifer.com/3Tt5.gif")
         return await ctx.send(embed=embed)
 
@@ -345,7 +360,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation commands", value="IDK that much discord.py")
-    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, hack, hug, invade, kill, kiss, lewds, marry, nitro, nuke, pat, sa, say, suck, tsun, waifu, warn, question")
+    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lewds, marry, nitro, nuke, pat, sa, say, suck, tsun, waifu, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
     await ctx.send(embed=embed)
@@ -398,8 +413,8 @@ async def söv(ctx, user:discord.Member = None):
 async def ayran(ctx):
 
     ayranv = [
-    "https://cdnuploads.aa.com.tr/uploads/Contents/2012/05/07/thumbs_b_c_b7d511d5f3c5280fe44450e2b947ae02.jpg"
-    "https://i.sozcu.com.tr/wp-content/uploads/2020/07/09/yazin-ayran-icmenin-vucuda-faydalari-2.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/8e/Fresh_ayran.jpg"
+    "https://i.hizliresim.com/YhMHce.jpg",
     "https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/08/17/01/18/resized_bc21b-b7825c1fshutterstock_343692611custom.jpg",
     "https://www.formsante.com.tr/wp-content/uploads/2019/04/4-25-e1594291717532.jpg",
     "https://www.gastrofests.com/wp-content/uploads/2020/07/ayran-840x560.jpg",
