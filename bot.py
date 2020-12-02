@@ -398,8 +398,8 @@ async def söv(ctx, user:discord.Member = None):
 async def ayran(ctx):
 
     ayranv = [
-    "https://upload.wikimedia.org/wikipedia/commons/8/8e/Fresh_ayran.jpg"
-    "https://i.hizliresim.com/YhMHce.jpg",
+    "https://cdnuploads.aa.com.tr/uploads/Contents/2012/05/07/thumbs_b_c_b7d511d5f3c5280fe44450e2b947ae02.jpg"
+    "https://i.sozcu.com.tr/wp-content/uploads/2020/07/09/yazin-ayran-icmenin-vucuda-faydalari-2.jpg",
     "https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/08/17/01/18/resized_bc21b-b7825c1fshutterstock_343692611custom.jpg",
     "https://www.formsante.com.tr/wp-content/uploads/2019/04/4-25-e1594291717532.jpg",
     "https://www.gastrofests.com/wp-content/uploads/2020/07/ayran-840x560.jpg",
