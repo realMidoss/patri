@@ -394,7 +394,7 @@ async def söv(ctx, user:discord.Member = None):
 
     await ctx.send(f'{user.name}, {random.choice(kufurler)}')
 
-bot.command()
+@bot.command()
 async def ayran(ctx):
 
     ayranv = [
