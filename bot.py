@@ -349,6 +349,18 @@ async def nuke(ctx):
         return await ctx.send(embed=embed)
 
     await ctx.send("Cancelled") 
+
+@bot.command()
+async def odimm(ctx):
+    
+    siir = 'His smile fair as spring, as towards him he draws you \n His tongue sharp and silvery, as he implores you \n Your wishes he grants, as he swears to adore you \n Gold, silver, jewels – he lays riches before you \n Dues need be repaid, and he will come for you \n All to reclaim, no smile to console you \n He’ll snare you in bonds, eyes glowing’, a fire \n To gore and torment you, till the stars expire'
+    
+    embed = discord.Embed(title="Master of Mirrors", description=(siir))
+    embed.set_image(url="https://media4.giphy.com/media/Zco583eGXoH1MYjBla/200.gif")
+    
+    await ctx.send(embed=embed)
+    
+   
     
 #help command
 
@@ -360,7 +372,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation commands", value="IDK that much discord.py")
-    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lewds, marry, nitro, nuke, pat, sa, say, suck, tsun, waifu, warn, question")
+    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lewds, marry, nitro, nuke, pat, sa, say, suck, tsun, odimm, waifu, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
     await ctx.send(embed=embed)
