@@ -194,7 +194,7 @@ async def hug(ctx,user:discord.Member = None):
         await ctx.send("You can't hug air. Tag our lucky boy UwU")
         return
     if user==ctx.author:
-        await ctx.send("You cant hug yourself. but your left hand is avaible")
+        await ctx.send("You cant hug yourself. but your left hand is available")
         return
     
     hugv = [
