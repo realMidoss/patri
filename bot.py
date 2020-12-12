@@ -6,7 +6,7 @@ import re
 import random
 import asyncio
 
-bot = commands.Bot(command_prefix=['patri ', 'Patri'], help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
+bot = commands.Bot(command_prefix=["patri ", "Patri "], help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
 #Poll Komutu 
 
