@@ -410,7 +410,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation commands", value="IDK that much discord.py")
-    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lewds, marry, nitro, nuke, pat, sa, say, suck, tsun, odimm, waifu, warn, question")
+    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, sa, say, suck, tsun, odimm, waifu, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
     await ctx.send(embed=embed)
