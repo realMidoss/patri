@@ -348,7 +348,7 @@ async def pogchamp(ctx,user:discord.Member = None):
         await ctx.send("Ara? Do you wanna be your own pogchamp? That's cute")
         return  
 
-    embed = discord.Embed(title=f"Fine! Guess your my little pogchamp... Come here {user.name}")
+    embed = discord.Embed(title=f"Fine! Guess your my little pogchamp... Come here {user.name}", description="I'm blusing", color = ctx.author.color)
     embed.set_image(url="https://i.ytimg.com/vi/7awd-y_DTQY/maxresdefault.jpg")
 
     await ctx.send(embed=embed)
