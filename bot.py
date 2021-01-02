@@ -332,7 +332,6 @@ async def lappillow(ctx,user:discord.Member = None):
     "https://cdn.awwni.me/t3m5.gif"
     ]
 
-
     embed = discord.Embed(title=f"{user.name} gets a cute lap pillow from {ctx.author.name}", description="That's so lovely!", color = ctx.author.color)
     embed.set_image(url=random.choice(yastik))
 
