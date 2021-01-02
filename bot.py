@@ -418,6 +418,8 @@ async def ara(ctx):
     embed = discord.Embed(title=f"{ctx.author.name} ara ara's...", description="Kinda cute", color=discord.Color.red())
     embed.set_image(url=random.choice(arav))
     
+    await ctx.send(embed=embed)
+    
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -428,7 +430,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation commands", value="IDK that much discord.py")
-    embed.add_field(name="Fun Commands", value="bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, sa, say, suck, tsun, odimm, waifu, warn, question")
+    embed.add_field(name="Fun Commands", value="ara, bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, sa, say, suck, tsun, odimm, waifu, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
     await ctx.send(embed=embed)
