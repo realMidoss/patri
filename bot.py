@@ -325,13 +325,13 @@ async def lappillow(ctx,user:discord.Member = None):
         await ctx.send("That's a bro moment. But you cant lie on your own lap unless you broke your neck...")
         return   
     
-    yastik = [
+     yastik = [
     "https://i.hizliresim.com/pgTnCN.gif",
-    "https://i.pinimg.com/236x/ae/2c/0d/ae2c0d29c5fb062c80d852572b89eed2---movie-kimi-no-na-wa.jpg",
-    "https://pm1.narvii.com/6351/30a2eb83411219b8629edd6a2167b54eafc3a09d_hq.jpg",
-    "https://cdnb.artstation.com/p/assets/images/images/030/342/265/large/andrew-khok-doodle-9-13-20.jpg?1600308488",
-    "https://64.media.tumblr.com/8c40658e471468647922fa323b22b4db/980cce0c82740922-f5/s1280x1920/5d7b275f6d15d262049306bc757e5b62c41e974b.jpg",
+    "https://media.tenor.com/images/6eb51ecba07ba236ab717ca1fa3a02a0/tenor.gif",
+    "https://media.tenor.com/images/f6053a70c19ac74045aae1cfc9c85e78/tenor.gif",
+    "https://cdn.awwni.me/t3m5.gif"
     ]
+
 
     embed = discord.Embed(title=f"{user.name} gets a cute lap pillow from {ctx.author.name}", description="That's so lovely!", color = ctx.author.color)
     embed.set_image(url=random.choice(yastik))
