@@ -325,7 +325,7 @@ async def lappillow(ctx,user:discord.Member = None):
         await ctx.send("That's a bro moment. But you cant lie on your own lap unless you broke your neck...")
         return   
     
-     yastik = [
+    yastik = [
     "https://i.hizliresim.com/pgTnCN.gif",
     "https://media.tenor.com/images/6eb51ecba07ba236ab717ca1fa3a02a0/tenor.gif",
     "https://media.tenor.com/images/f6053a70c19ac74045aae1cfc9c85e78/tenor.gif",
