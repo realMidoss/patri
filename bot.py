@@ -403,7 +403,20 @@ async def odimm(ctx):
     
     await ctx.send(embed=embed)
     
-   
+@bot.command()
+async def ara(ctx):
+    
+    arav = [
+    "https://i.pinimg.com/originals/14/16/8e/14168e97f35efe70cbdb386122e1b5e9.gif",
+    "https://i.pinimg.com/originals/11/90/66/119066a6751819f2d20e4760a2ad4277.gif",
+    "https://64.media.tumblr.com/6f917421b530790905865539cb919dad/tumblr_p1o3qcsLqO1wmel88o3_500.gifv",
+    "https://i.hizliresim.com/MQaeNF.gif",
+    "https://media.tenor.com/images/7ea76f356b64ec0fbb47341e872f7ea2/tenor.gif",
+    "https://64.media.tumblr.com/2086b091452d87e5b3322923b9bb2256/tumblr_px6l0gh5ZH1vip2zbo2_500.gifv",
+    ]
+
+    embed = discord.Embed(title=f"{ctx.author.name} ara ara's...", description="Kinda cute", color=discord.Color.red())
+    embed.set_image(url=random.choice(arav))
     
 #help command
 
