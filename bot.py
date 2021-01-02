@@ -124,7 +124,7 @@ async def marry(ctx,user:discord.Member = None):
     "https://i.pinimg.com/originals/0e/5a/e8/0e5ae8c0c07c847e1f8c4d1c8665872f.gif",
     "https://pa1.narvii.com/6505/af2b8c242ffdb5300dd1bf83a2587e44b1d12298_00.gif",]
 
-    embed = discord.Embed(title=f"{ctx.author} marries to {user.name}", description="Ahhh... So cute! I'm blushing", color=ctx.author.color)
+    embed = discord.Embed(title=f"{ctx.author.name} marries to {user.name}", description="Ahhh... So cute! I'm blushing", color=ctx.author.color)
     embed.set_image(url=random.choice(marriage))
 
     await ctx.send(embed=embed)
@@ -142,7 +142,7 @@ async def kill(ctx,user:discord.Member = None):
         "https://64.media.tumblr.com/130a00d77bd535456e4518cf1f9397f9/tumblr_pdf9aaSUmM1xci9v9o2_500.gif",
         "https://data.whicdn.com/images/251664843/original.gif",]
 
-        embed = discord.Embed(title=f"{ctx.author} commited suicide ", description="F")
+        embed = discord.Embed(title=f"{ctx.author.name} commited suicide ", description="F")
         embed.set_image(url=random.choice(intihar))  
         
         await ctx.send(embed=embed)
@@ -154,7 +154,7 @@ async def kill(ctx,user:discord.Member = None):
     "https://i.pinimg.com/originals/d4/bb/e2/d4bbe21cfe5993e13173c4692db757d0.gif",
     "https://i.kym-cdn.com/photos/images/newsfeed/000/637/941/20b.gif",] 
 
-    embed = discord.Embed(title=f"{ctx.author} kills {user.name}", description="Bam Bam Bam", color=discord.Color.dark_red())
+    embed = discord.Embed(title=f"{ctx.author.name} kills {user.name}", description="Bam Bam Bam", color=discord.Color.dark_red())
     embed.set_image(url=random.choice(killv)) 
 
     await ctx.send(embed=embed)    
@@ -162,7 +162,7 @@ async def kill(ctx,user:discord.Member = None):
 @bot.command()
 async def tsun(ctx):
     
-    embed = discord.Embed(title=f"{ctx.author} says: Tsun Tsun Hantsun!", description="Hans is a tsundere", color=discord.Color.magenta())
+    embed = discord.Embed(title=f"{ctx.author.name} says: Tsun Tsun Hantsun!", description="Hans is a tsundere", color=discord.Color.magenta())
     embed.set_image(url="https://en.1jux.net/scale_images/456704_b.jpg")
 
     await ctx.send(embed=embed)
@@ -170,7 +170,7 @@ async def tsun(ctx):
 @bot.command()
 async def bruh(ctx):
     
-    embed = discord.Embed(title=f"{ctx.author} thinks its a bro moment", description="Bro moment is such a moment;", color=discord.Color.darker_gray())
+    embed = discord.Embed(title=f"{ctx.author.name} thinks its a bro moment", description="Bro moment is such a moment;", color=discord.Color.darker_gray())
     embed.set_image(url="https://i.ytimg.com/vi/ZF57zsOWdB0/maxresdefault.jpg")
 
     await ctx.send(embed=embed)
@@ -203,7 +203,7 @@ async def hug(ctx,user:discord.Member = None):
     "https://media2.giphy.com/media/l2QDM9Jnim1YVILXa/source.gif",
     ]
 
-    embed = discord.Embed(title=f"{ctx.author} hugs {user.name}", description="Ain't this cute? I envy them...", color = ctx.author.color)
+    embed = discord.Embed(title=f"{ctx.author.name} hugs {user.name}", description="Ain't this cute? I envy them...", color = ctx.author.color)
     embed.set_image(url=random.choice(hugv)) 
 
     await ctx.send(embed=embed)
@@ -231,7 +231,7 @@ async def bully(ctx,user:discord.Member = None):
         await ctx.send("Why would you want to bully yourself? Just look at the mirror")
         return
 
-    embed = discord.Embed(title=f"{ctx.author} bullies {user.name}", color=discord.Color.blue())
+    embed = discord.Embed(title=f"{ctx.author.name} bullies {user.name}", color=discord.Color.blue())
     embed.set_image(url="https://i.pinimg.com/736x/73/08/39/730839953404c1d46a158f12c5c4f78f.jpg")
 
     await ctx.send(embed=embed)
@@ -253,7 +253,7 @@ async def kiss(ctx,user:discord.Member = None):
     "https://i.pinimg.com/originals/21/82/d8/2182d81bc459732fdf9bf94d1dd068c4.gif",
     ]
 
-    embed = discord.Embed(title=f"{ctx.author} kissed {user.name}...", description="Ahh young love...", color=discord.Color.magenta())
+    embed = discord.Embed(title=f"{ctx.author.name} kissed {user.name}...", description="Ahh young love...", color=discord.Color.magenta())
     embed.set_image(url=random.choice(öp)) 
 
     await ctx.send(embed=embed)
@@ -261,7 +261,7 @@ async def kiss(ctx,user:discord.Member = None):
 @bot.command()
 async def suck(ctx):
 
-    embed = discord.Embed(title=f"{ctx.author} sucks", description="no not like that you perverted!")
+    embed = discord.Embed(title=f"{ctx.author.name} sucks", description="no not like that you perverted!")
     embed.set_image(url="https://cdn.discordapp.com/attachments/757701650537250957/780183991474454528/popsicleporn.gif")
 
     await ctx.send(embed=embed)
@@ -269,7 +269,7 @@ async def suck(ctx):
 @bot.command()
 async def çay(ctx):
 
-    embed = discord.Embed(title=f"{ctx.author} made tea and grabs a glass of it. Anyone else wants?", description="tea is great", color=discord.Color.red())
+    embed = discord.Embed(title=f"{ctx.author.name} made tea and grabs a glass of it. Anyone else wants?", description="tea is great", color=discord.Color.red())
     embed.set_image(url="https://i.pinimg.com/originals/fd/35/6b/fd356b3bf3fe3a3839efa654aaf52d61.gif")
 
     await ctx.send(embed=embed)
@@ -296,7 +296,7 @@ async def pat(ctx,user:discord.Member = None):
         return
     
     if user==ctx.author:
-        embed = discord.Embed(title=f"{ctx.author} pats theirselves... It's just sad")
+        embed = discord.Embed(title=f"{ctx.author.name} pats theirselves... It's just sad")
         embed.set_image(url="https://pa1.narvii.com/6400/6a38438c39e60789ac39cfd7340acd868baeac90_00.gif")
         await ctx.send(embed=embed)
         return
@@ -309,7 +309,7 @@ async def pat(ctx,user:discord.Member = None):
     "https://thumbs.gfycat.com/ImpurePleasantArthropods-small.gif",
     ]
 
-    embed = discord.Embed(title=f"{ctx.author} pats, {user.name}", description="pat pat", color=discord.Color.gold())
+    embed = discord.Embed(title=f"{ctx.author.name} pats, {user.name}", description="pat pat", color=discord.Color.gold())
     embed.set_image(url=random.choice(patv))
 
     await ctx.send(embed=embed)
@@ -333,7 +333,7 @@ async def lappillow(ctx,user:discord.Member = None):
     "https://64.media.tumblr.com/8c40658e471468647922fa323b22b4db/980cce0c82740922-f5/s1280x1920/5d7b275f6d15d262049306bc757e5b62c41e974b.jpg",
     ]
 
-    embed = discord.Embed(title=f"{user.name} gets a cute lap pillow from {ctx.author}", description="That's so lovely!", color = ctx.author.color)
+    embed = discord.Embed(title=f"{user.name} gets a cute lap pillow from {ctx.author.name}", description="That's so lovely!", color = ctx.author.color)
     embed.set_image(url=random.choice(yastik))
 
     await ctx.send(embed=embed)
@@ -353,6 +353,7 @@ async def pogchamp(ctx,user:discord.Member = None):
 
     await ctx.send(embed=embed)
 
+
 @bot.command()
 async def nitro(ctx):
     
@@ -367,7 +368,10 @@ async def nuke(ctx):
     yas = '✔️'
     nay = '❌'
     
-    message = await ctx.send("Are you sure that you want to use your nukes?")
+    embed = discord.Embed(title="Are you sure that you want to use your nukes?", color = ctx.author.color)
+    embed.set_thumbnail(url=ctx.author.avatar_url)
+    message = await ctx.send(embed=embed)
+    
     
     await message.add_reaction(yas)
     await message.add_reaction(nay)
@@ -382,10 +386,12 @@ async def nuke(ctx):
         await ctx.send("I dont have all day")
     
     if str(reaction.emoji) == yas:
-        embed = discord.Embed(title="Code:87453 Activated, Destruction stars...")
+        embed = discord.Embed(title="Code:87453 Activated, Destruction stars...", description=f"{ctx.author.name} used their nukes...", color=discord.Color.dark_red())
         embed.set_image(url="https://i.gifer.com/3Tt5.gif")
         return await ctx.send(embed=embed)
-    await ctx.send("Cancelled") 
+    
+    embed = discord.Embed(title="Cancelled, Coward...", color=discord.Color.green())
+    await ctx.send(embed=embed) 
 
 
 @bot.command()
