@@ -53,10 +53,6 @@ async def ping(ctx):
     await ctx.send(f':ping_pong: Pong! {round(bot.latency * 1000)} ms')
 
 @bot.command()
-async def sa(ctx):
-    await ctx.send('as')
-
-@bot.command()
 async def waifu(ctx):
    await ctx.send('ewww degenerete')
 
@@ -367,7 +363,8 @@ async def nuke(ctx):
     yas = '✔️'
     nay = '❌'
     
-    embed = discord.Embed(title="Are you sure that you want to use your nukes?", color = ctx.author.color)
+    embed = discord.Embed(title="Do you wish to confirm the launch?", color = ctx.author.color)
+    embed.add_field(name=f"ID: {ctx.author.name}", value="Acces approved...")
     embed.set_thumbnail(url=ctx.author.avatar_url)
     message = await ctx.send(embed=embed)
     
@@ -402,7 +399,7 @@ async def odimm(ctx):
     embed.set_image(url="https://media4.giphy.com/media/Zco583eGXoH1MYjBla/200.gif")
     
     await ctx.send(embed=embed)
-    
+
 @bot.command()
 async def ara(ctx):
     
@@ -419,7 +416,7 @@ async def ara(ctx):
     embed.set_image(url=random.choice(arav))
     
     await ctx.send(embed=embed)
-    
+      
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -430,7 +427,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation commands", value="IDK that much discord.py")
-    embed.add_field(name="Fun Commands", value="ara, bruh, bully, çay, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, sa, say, suck, tsun, odimm, waifu, warn, question")
+    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, say, suck, tsun, odimm, waifu, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
     
     await ctx.send(embed=embed)
