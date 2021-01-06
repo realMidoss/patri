@@ -53,14 +53,6 @@ async def ping(ctx):
     await ctx.send(f':ping_pong: Pong! {round(bot.latency * 1000)} ms')
 
 @bot.command()
-async def waifu(ctx):
-   await ctx.send('ewww degenerete')
-
-@bot.command()
-async def howtobecomehappy(ctx):
-    await ctx.send('be happy')
-
-@bot.command()
 async def say(ctx, *, arg):
     await ctx.send(f'{arg}')
 
@@ -93,8 +85,19 @@ async def invade(ctx):
 @bot.command()
 async def HeroFighte(ctx):
     
+    hero = [
+    "https://cdn.discordapp.com/attachments/745035581670817842/796360277952036874/Face.png",
+    "https://cdn.discordapp.com/attachments/745035581670817842/796360329549316136/fullbody.png",
+    "https://cdn.discordapp.com/attachments/745035581670817842/796360361296658492/65-2.png",
+    "https://cdn.discordapp.com/attachments/745035581670817842/796360385849851974/HF_noBG.png",
+    "https://cdn.discordapp.com/attachments/745035581670817842/796360480767213568/OCMP7Cosplay.png",
+    "https://cdn.discordapp.com/attachments/745035581670817842/796360495552135178/HeroExplains.png",
+    "https://cdn.discordapp.com/attachments/745035581670817842/796360544696664064/HeroUnderweardone.png",
+    ]
+
+
     embed = discord.Embed(title="Dearest of Midoss", descprition="UwU")
-    embed.set_image(url="https://im.ezgif.com/tmp/ezgif-1-aeb156c4d215.png")
+    embed.set_image(url=random.choice(hero))
 
     await ctx.send(embed=embed)
 
@@ -377,9 +380,10 @@ async def nuke(ctx):
     def check(reaction, user):
         return user == ctx.author and str(reaction.emoji) in valid_reactions
     try:
-        reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
+        reaction = await bot.wait_for('reaction_add', timeout=10.0, check=check)
     except asyncio.TimeoutError:
-        await ctx.send("I dont have all day")
+        embed = discord.Embed(title="Progress Abandoned")
+        await ctx.send(embed=embed)
     
     if str(reaction.emoji) == yas:
         embed = discord.Embed(title="Code:87453 Activated, Destruction stars...", description=f"{ctx.author.name} used their nukes...", color=discord.Color.dark_red())
@@ -426,9 +430,9 @@ async def help(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Moderation commands", value="IDK that much discord.py")
-    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, say, suck, tsun, odimm, waifu, warn, question")
-    embed.add_field(name="Usefull Commands", value="HeroFighte, howtobecomehappy, ping, poll, info")
+    embed.add_field(name="Moderation commands", value="Coming Soon")
+    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, say, suck, tsun, odimm, warn, question")
+    embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
     await ctx.send(embed=embed)
 
@@ -441,16 +445,15 @@ async def yumurtalar(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/770041004073418822.png?v=1")
     
     embed.add_field(name="yumurtalar", value="Bu menüyü açar", inline=False)
-    embed.add_field(name="Ağlama Komutları", value="f35, ")
-    embed.add_field(name="Gır Gır Komutları", value="ayran, çay, söv")
-    embed.add_field(name="Kategori 3", value="bekleniyor")
+    embed.add_field(name="Ağlama Komutları", value="f35")
+    embed.add_field(name="Gır Gır Komutları", value="çay, söv")
     
     await ctx.send(embed=embed)
 
 @bot.command()
 async def f35(ctx):
 
-    embed = discord.Embed(title=f"{ctx.author} f35lere bakıyor ve ağlıyor")
+    embed = discord.Embed(title=f"{ctx.author.name} f35lere bakıyor ve ağlıyor")
     embed.set_image(url="https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/12/10/11/45/resized_b3d5f-f1d85093mansetc.jpg")
 
     await ctx.send(embed=embed)
@@ -472,27 +475,9 @@ async def söv(ctx, user:discord.Member = None):
         return
 
     if user==ctx.author:
-        await ctx.send("kendine mi sövüyorsun lan amk salağı :kekw:")
+        await ctx.send("Kendine saygın olsun biraz.")
         return
 
     await ctx.send(f'{user.name}, {random.choice(kufurler)}')
-
-@bot.command()
-async def ayran(ctx):
-
-    ayranv = [
-    "https://upload.wikimedia.org/wikipedia/commons/8/8e/Fresh_ayran.jpg"
-    "https://i.hizliresim.com/YhMHce.jpg",
-    "https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/08/17/01/18/resized_bc21b-b7825c1fshutterstock_343692611custom.jpg",
-    "https://www.formsante.com.tr/wp-content/uploads/2019/04/4-25-e1594291717532.jpg",
-    "https://www.gastrofests.com/wp-content/uploads/2020/07/ayran-840x560.jpg",
-    ]
-
-    embed = discord.Embed(title=f"{ctx.author}, ayran koydu", description="Ooooooh köpüklü köpüklü olsa da içsek")
-    embed.set_image(url=random.choice(ayranv))
-
-    await ctx.send(embed=embed)
-
-
 
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
