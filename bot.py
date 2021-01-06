@@ -366,7 +366,8 @@ async def nuke(ctx):
     yas = '✔️'
     nay = '❌'
     
-    embed = discord.Embed(title="Are you sure that you want to use your nukes?", color = ctx.author.color)
+    embed = discord.Embed(title="Do you wish to confirm the launch?", color = ctx.author.color)
+    embed.add_field(name=f"ID: {ctx.author.name}", value="Access approved...")
     embed.set_thumbnail(url=ctx.author.avatar_url)
     message = await ctx.send(embed=embed)
     
@@ -381,14 +382,14 @@ async def nuke(ctx):
     try:
         reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
     except asyncio.TimeoutError:
-        await ctx.send("I dont have all day")
+        await ctx.send("Progress Abondoned...")
     
     if str(reaction.emoji) == yas:
         embed = discord.Embed(title="Code:87453 Activated, Destruction stars...", description=f"{ctx.author.name} used their nukes...", color=discord.Color.dark_red())
         embed.set_image(url="https://i.gifer.com/3Tt5.gif")
         return await ctx.send(embed=embed)
     
-    embed = discord.Embed(title="Cancelled, Coward...", color=discord.Color.green())
+    embed = discord.Embed(title="Cancelled", color=discord.Color.green())
 
 
 @bot.command()
