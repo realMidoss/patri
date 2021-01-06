@@ -382,8 +382,7 @@ async def nuke(ctx):
     try:
         reaction = await bot.wait_for('reaction_add', timeout=10.0, check=check)
     except asyncio.TimeoutError:
-        embed = discord.Embed(title="Progress Abandoned")
-        await ctx.send(embed=embed)
+        await ctx.send("Progress Abandoned")
     
     if str(reaction.emoji) == yas:
         embed = discord.Embed(title="Code:87453 Activated, Destruction stars...", description=f"{ctx.author.name} used their nukes...", color=discord.Color.dark_red())
