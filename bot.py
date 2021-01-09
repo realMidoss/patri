@@ -18,7 +18,8 @@ async def poll(ctx, *, arg):
     idk = '♻️'
     nay = '❌'
     
-    embed = discord.Embed(title=f"{arg}")
+    embed = discord.Embed(title=f"{ctx.author.name} asks:", description=f"{arg}", color=ctx.author.color)
+    embed.set_thumbnail(url=ctx.author.avatar_url)
     message = await ctx.send(embed=embed)
     
     await message.add_reaction(yas)
@@ -390,6 +391,7 @@ async def nuke(ctx):
         return await ctx.send(embed=embed)
     
     embed = discord.Embed(title="Cancelled", color=discord.Color.green())
+    await ctx.send(embed=embed)
 
 
 @bot.command()
@@ -424,11 +426,11 @@ async def ara(ctx):
 @bot.group(invoke_without_command=True)
 async def help(ctx):
 
-    embed = discord.Embed(title="Patri Bot", description="This is a basic practice mod, mainly for GAM discord. Creator: Midoss", color = ctx.author.color)
+    embed = discord.Embed(title="Patri Bot", description="Basic Fun Bot for GAM \n by Midoss", color = ctx.author.color)
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Moderation commands", value="Coming Soon")
+    embed.add_field(name="Moderation Commands", value="Coming Soon")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, say, suck, tsun, odimm, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
