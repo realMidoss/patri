@@ -6,6 +6,8 @@ import re
 import random
 import asyncio
 
+
+
 bot = commands.Bot(command_prefix=["patri ", "Patri ","p ","P "], help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
 #Poll Komutu 
@@ -162,9 +164,9 @@ async def kill(ctx,user:discord.Member = None):
 @bot.command()
 async def tsun(ctx):
     
-    embed = discord.Embed(title=f"{ctx.author.name} says: Tsun Tsun Hantsun!", description="Hans is a tsundere", color=discord.Color.magenta())
-    embed.set_image(url="https://en.1jux.net/scale_images/456704_b.jpg")
-
+    user = await bot.fetch_user(291094866778259457)
+    embed = discord.Embed(title=f"{ctx.author.name} thinks {user.name} is a tsundere!", description="Tsun tsun Hantsun!", color=discord.Color.magenta())
+    embed.set_image(url=user.avatar_url)
     await ctx.send(embed=embed)
 
 @bot.command()
