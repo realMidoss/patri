@@ -62,14 +62,6 @@ async def say(ctx, *, arg):
 #Embed Commands
 
 @bot.command()
-async def lewds(ctx):
-    embed = discord.Embed(title="You frickin lolicon!", description="I am under age!", color=discord.Color.greyple())
-    embed.set_image(url="https://media.tenor.com/images/a1912e38f72c5df9050d931853fafddb/tenor.gif")
-    
-    await ctx.send(embed=embed)
-
-
-@bot.command()
 async def info(ctx):
     embed = discord.Embed(title=f"{ctx.guild.name}", description="I am useless", timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
     embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
@@ -207,20 +199,6 @@ async def hug(ctx,user:discord.Member = None):
 
     embed = discord.Embed(title=f"{ctx.author.name} hugs {user.name}", description="Ain't this cute? I envy them...", color = ctx.author.color)
     embed.set_image(url=random.choice(hugv)) 
-
-    await ctx.send(embed=embed)
-
-@bot.command()
-async def hack(ctx,user:discord.Member = None):
-    if user is None:
-        await ctx.send("Target practice? Tag someone!")
-        return
-    if user==ctx.author:
-        await ctx.send("WTF? Are you stupid? You can't hack yourself!")
-        return
-   
-    embed = discord.Embed(title=f"{ctx.author} hacks {user.name}", description="Damn man homework folder looks kinda sus...", color=discord.Color.green())
-    embed.set_image(url="https://i.pinimg.com/originals/62/c9/3a/62c93a4cf6462f54fdea6d735d927f9c.gif")    
 
     await ctx.send(embed=embed)
 
@@ -395,17 +373,6 @@ async def nuke(ctx):
     embed = discord.Embed(title="Cancelled", color=discord.Color.green())
     await ctx.send(embed=embed)
 
-
-@bot.command()
-async def odimm(ctx):
-    
-    siir = 'His smile fair as spring, as towards him he draws you \n His tongue sharp and silvery, as he implores you \n Your wishes he grants, as he swears to adore you \n Gold, silver, jewels – he lays riches before you \n Dues need be repaid, and he will come for you \n All to reclaim, no smile to console you \n He’ll snare you in bonds, eyes glowing’, a fire \n To gore and torment you, till the stars expire'
-    
-    embed = discord.Embed(title="Master of Mirrors", description=(siir), color=discord.Color.dark_blue())
-    embed.set_image(url="https://media4.giphy.com/media/Zco583eGXoH1MYjBla/200.gif")
-    
-    await ctx.send(embed=embed)
-
 @bot.command()
 async def ara(ctx):
     
@@ -433,7 +400,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Moderation Commands", value="Coming Soon")
-    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hack, hug, invade, kill, kiss, lappilow, lewds, marry, nitro, nuke, pat, pogchamp, say, suck, tsun, odimm, warn, question")
+    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kill, kiss, lappilow, marry, nitro, nuke, pat, pogchamp, say, suck, tsun, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
     await ctx.send(embed=embed)
