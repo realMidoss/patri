@@ -332,15 +332,6 @@ async def pogchamp(ctx,user:discord.Member = None):
 
     await ctx.send(embed=embed)
 
-
-@bot.command()
-async def nitro(ctx):
-    
-    embed = discord.Embed(title="Here take this nitro", description="It's on me!")
-    embed.set_image(url="https://i.ytimg.com/vi/iuK5d-9zSDY/maxresdefault.jpg")
-
-    await ctx.send(embed=embed)
-
 @bot.command()
 async def nuke(ctx):
     
