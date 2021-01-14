@@ -5,6 +5,8 @@ from urllib import parse, request
 import re
 import random
 import asyncio
+import json
+import os
 
 
 
@@ -352,7 +354,7 @@ async def nuke(ctx):
     def check(reaction, user):
         return user == ctx.author and str(reaction.emoji) in valid_reactions
     try:
-        reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
+        reaction = await bot.wait_for('reaction_add', timeout=10.0, check=check)
     except asyncio.TimeoutError:
         await ctx.send("Progress Abondoned...")
     
@@ -381,6 +383,62 @@ async def ara(ctx):
     
     await ctx.send(embed=embed)
       
+#Ekonomi Komutları 
+
+os.chdir("./bank.json")
+
+@bot.command()
+async def balance(ctx):
+    await open_account(ctx.author)
+    user = ctx.author
+    users = await get_bank_data(ctx.author)
+
+    wallet_amt = users[str(user.id)]["wallet"]
+    bank_amt = users[str(user.id)]["bank"]
+
+    embed = discord.Embed(title=f"{ctx.author.name}'s account",color=discord.Color.red())
+    embed.add_field(name="Wallet", value= wallet_amt)
+    embed.add_field(name="Bank", value= bank_amt)
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def beg(ctx):
+    await open_account(ctx.author)
+    user = ctx.author
+    users = await get_bank_data(ctx.author)
+
+    earnings = random.randrange(101)
+
+    await ctx.send(f"You lucky! Someone gave you {earnings} coins!!")
+    
+    
+    users[str(user.id)]["wallet"] += earnings
+
+    with open("bank.json","w") as f:
+        json.dump(users,f)
+
+
+async def open_account(user):
+    with open("bank.json","r") as f:
+        users = json.load(f)
+
+    if str(user.id) in users:
+        return False
+    else:
+        users[str(user.id)] = {}
+        users[str(user.id)]["wallet"] = 0
+        users[str(user.id)]["bank"] = 0
+
+    with open("bank.json","w") as f:
+        json.dump(users,f)
+    return True
+
+async def get_bank_data(ctx):
+    with open("bank.json","r") as f:
+        users = json.load(f)
+
+    return users
+
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -390,7 +448,7 @@ async def help(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Moderation Commands", value="Coming Soon")
+    embed.add_field(name="Economy Commands", value="Coming Soon")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kill, kiss, lappilow, marry, nuke, pat, pogchamp, say, suck, tsun, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
