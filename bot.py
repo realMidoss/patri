@@ -391,7 +391,7 @@ async def help(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Economy Commands", value="Coming soon...")
+    embed.add_field(name="Economy Commands", value="Will be avaible in the future")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kill, kiss, lappilow, marry, nuke, pat, pogchamp, say, suck, tsun, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
