@@ -36,7 +36,7 @@ async def on_ready():
 #Text Commands
 
 @bot.command(pass_context=True)
-async def question(ctx, *, arg):
+async def question(ctx, *, arg = None):
     variable = [
         "sure",
         "yes",
@@ -46,7 +46,16 @@ async def question(ctx, *, arg):
         "Why not?",
         "IDK",
         "How the fuck I can know?",]
-    await ctx.send(random.choice(variable))
+    
+    if arg == None:
+        await ctx.send("You must ask a question")
+        return
+    
+    embed = discord.Embed(title=f"{ctx.author.name} asks for my wisdom!", description=f"{arg}", color = discord.Color.blue())
+    embed.add_field(name="My answer is...", value=(random.choice(variable)))
+    embed.set_thumbnail(url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCtMzoeQ8IGRoiYslQrnccanwkl7DtAJXTTQ&usqp=CAU")
+    
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def ping(ctx):
