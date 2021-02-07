@@ -386,6 +386,27 @@ async def ara(ctx):
     embed.set_image(url=random.choice(arav))
     
     await ctx.send(embed=embed)
+    
+@bot.command()
+async def choco(ctx,user:discord.Member = None):
+    if user is None:
+        await ctx.send("To who?")
+        return
+    
+    if user==ctx.author:
+        await ctx.send("Ara? Are you sad you little lonely ass who doesnt get any chocolate")
+        return   
+
+    ciko = [
+    "https://64.media.tumblr.com/56877f3f541325a1265a0a3136a7a954/tumblr_p44vrjhuWh1wn2b96o1_500.gifv",
+    "https://64.media.tumblr.com/d86c84d929be5dd8a44e2841976af481/tumblr_mhcw5i7Oet1rksv4mo2_500.gifv",
+    "https://media1.tenor.com/images/02adffffe8f93e1630eb5a725c86e100/tenor.gif?itemid=12004195"
+    ]
+
+    embed = discord.Embed(title=f"{user.name} gets a choco from {ctx.author.name}", description="Cuuute", color = ctx.author.color)
+    embed.set_image(url=random.choice(ciko))
+
+    await ctx.send(embed=embed)    
       
 #Ekonomi Komutları 
 
