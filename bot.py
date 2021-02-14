@@ -301,7 +301,7 @@ async def pat(ctx,user:discord.Member = None):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def lappillow(ctx,user:discord.Member = None):
+async def lap(ctx,user:discord.Member = None):
     
     if user is None:
         await ctx.send("You need to give lap pillows. That's cute but mention someone")
@@ -320,21 +320,6 @@ async def lappillow(ctx,user:discord.Member = None):
 
     embed = discord.Embed(title=f"{user.name} gets a cute lap pillow from {ctx.author.name}", description="That's so lovely!", color = ctx.author.color)
     embed.set_image(url=random.choice(yastik))
-
-    await ctx.send(embed=embed)
-
-@bot.command()
-async def pogchamp(ctx,user:discord.Member = None):
-    if user is None:
-        await ctx.send("Tag someone stupid!")
-        return
-    
-    if user==ctx.author:
-        await ctx.send("Ara? Do you wanna be your own pogchamp? That's cute")
-        return  
-
-    embed = discord.Embed(title=f"Fine! Guess your my little pogchamp... Come here {user.name}", description="I'm blusing", color = ctx.author.color)
-    embed.set_image(url="https://i.ytimg.com/vi/7awd-y_DTQY/maxresdefault.jpg")
 
     await ctx.send(embed=embed)
 
@@ -386,7 +371,7 @@ async def ara(ctx):
     embed.set_image(url=random.choice(arav))
     
     await ctx.send(embed=embed)
-    
+
 @bot.command()
 async def choco(ctx,user:discord.Member = None):
     if user is None:
@@ -402,12 +387,13 @@ async def choco(ctx,user:discord.Member = None):
     "https://64.media.tumblr.com/d86c84d929be5dd8a44e2841976af481/tumblr_mhcw5i7Oet1rksv4mo2_500.gifv",
     "https://media1.tenor.com/images/02adffffe8f93e1630eb5a725c86e100/tenor.gif?itemid=12004195"
     "https://media0.giphy.com/media/L0qBXPij9Fj7ciA3yG/giphy.gif",
-    "https://s11.favim.com/orig/7/762/7627/76279/gif-anime-food-anime-Favim.com-7627996.gif"
+    "https://s11.favim.com/orig/7/762/7627/76279/gif-anime-food-anime-Favim.com-7627996.gif",
     ]
+
     embed = discord.Embed(title=f"{user.name} gets a choco from {ctx.author.name}", description="Cuuute", color = ctx.author.color)
     embed.set_image(url=random.choice(ciko))
 
-    await ctx.send(embed=embed)    
+    await ctx.send(embed=embed)
       
 #Ekonomi Komutları 
 
@@ -423,7 +409,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Economy Commands", value="Will be avaible in the future")
-    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kill, kiss, lappilow, marry, nuke, pat, pogchamp, say, suck, tsun, warn, question")
+    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kill, kiss, lap, marry, nuke, pat, say, suck, tsun, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
     await ctx.send(embed=embed)
