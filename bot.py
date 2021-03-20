@@ -373,14 +373,14 @@ async def ara(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def kick(ctx,user:discord.Member, *, arg): 
+async def kick(ctx,user:discord.Member = None, *, arg): 
 
-    if user==None:
+    if user is None:
         await ctx.send("You need to mention the person that you wanted to kick")
         return
 
     if user==ctx.author:
-        await ctx.send("You can't kick yourself. It's not 1984")
+        await ctx.send("You can not kick yourself. It is not 1984")
         return
         
     embed = discord.Embed(title=f"{user.name} has been kicked. Reason: {arg}"), color=discord.Color.dark_red())
