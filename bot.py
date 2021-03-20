@@ -385,7 +385,7 @@ async def kick(ctx,user:discord.Member, *, arg):
         
     embed = discord.Embed(title=f"{user.name} has been kicked", description="That must be painfull", color=discord.Color.dark_red())
     embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
-    return await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
       
 #Ekonomi Komutları 
