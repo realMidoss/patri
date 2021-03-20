@@ -380,7 +380,7 @@ async def kick(ctx,user:discord.Member = None):
         return
 
     if user==ctx.author:
-        await ctx.send("You can't kick yourself. It's not 1984")
+        await ctx.send("You can not kick yourself. It is not 1984")
         return
         
     embed = discord.Embed(title=f"{user.name} has been kicked", color=discord.Color.dark_red())
