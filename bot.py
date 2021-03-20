@@ -373,29 +373,6 @@ async def ara(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def choco(ctx,user:discord.Member = None):
-    if user is None:
-        await ctx.send("To who?")
-        return
-    
-    if user==ctx.author:
-        await ctx.send("Ara? Are you sad you little lonely ass who doesnt get any chocolate")
-        return   
-
-    ciko = [
-    "https://64.media.tumblr.com/56877f3f541325a1265a0a3136a7a954/tumblr_p44vrjhuWh1wn2b96o1_500.gifv",
-    "https://64.media.tumblr.com/d86c84d929be5dd8a44e2841976af481/tumblr_mhcw5i7Oet1rksv4mo2_500.gifv",
-    "https://media1.tenor.com/images/02adffffe8f93e1630eb5a725c86e100/tenor.gif?itemid=12004195"
-    "https://media0.giphy.com/media/L0qBXPij9Fj7ciA3yG/giphy.gif",
-    "https://s11.favim.com/orig/7/762/7627/76279/gif-anime-food-anime-Favim.com-7627996.gif",
-    ]
-
-    embed = discord.Embed(title=f"{user.name} gets a choco from {ctx.author.name}", description="Cuuute", color = ctx.author.color)
-    embed.set_image(url=random.choice(ciko))
-
-    await ctx.send(embed=embed)
-
-@bot.command()
 async def kick(ctx,user:discord.Member, *, arg): 
 
     if user==None:
@@ -406,30 +383,10 @@ async def kick(ctx,user:discord.Member, *, arg):
         await ctx.send("You can't kick yourself. It's not 1984")
         return
         
-    yas = '✔️'
-    nay = '❌'
+    embed = discord.Embed(title=f"{user.name} has been kicked", description="That must be painfull", color=discord.Color.dark_red())
+    embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
+    return await ctx.send(embed=embed)
 
-    embed = discord.Embed(title=f"Are you sure that you want to kick {user.name}", color = ctx.author.color)
-    message = await ctx.send(embed=embed)
-   
-    await message.add_reaction(yas)
-    await message.add_reaction(nay)
-    
-    valid_reactions = ['✔️', '❌']
-    
-    def check(reaction, user):
-        return user == ctx.author and str(reaction.emoji) in valid_reactions
-    try:
-        reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
-    except asyncio.TimeoutError:
-        await ctx.send("Cancelled...")
-    
-    if str(reaction.emoji) == yas:
-        embed = discord.Embed(title=f"{user.name} has been kicked", description="That must be painfull", color=discord.Color.dark_red())
-        embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
-        return await ctx.send(embed=embed)
-    
-    await ctx.send("Abondoned...") 
       
 #Ekonomi Komutları 
 
