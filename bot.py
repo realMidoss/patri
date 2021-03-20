@@ -429,7 +429,7 @@ async def kick(ctx,user:discord.Member, *, arg):
         embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
         return await ctx.send(embed=embed)
     
-    await ctx.send("Nope") 
+    await ctx.send("Abondoned...") 
       
 #Ekonomi Komutları 
 
