@@ -397,6 +397,13 @@ async def choco(ctx,user:discord.Member = None):
 
 @bot.command()
 async def kick(ctx,user:discord.Member, *, arg): 
+
+    if user==None:
+        await ctx.send("You need to mention the person that you wanted to kick")
+        return
+
+    if user==ctx.author:
+        await ctx.send("You can't kick yourself. It's not 1984")
         
     yas = '✔️'
     nay = '❌'
@@ -421,7 +428,7 @@ async def kick(ctx,user:discord.Member, *, arg):
         embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
         return await ctx.send(embed=embed)
     
-    await ctx.send("Abondoned...") 
+    await ctx.send("Nope") 
       
 #Ekonomi Komutları 
 
