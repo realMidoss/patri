@@ -394,6 +394,34 @@ async def choco(ctx,user:discord.Member = None):
     embed.set_image(url=random.choice(ciko))
 
     await ctx.send(embed=embed)
+
+@bot.command()
+async def kick(ctx,user:discord.Member, *, arg): 
+        
+    yas = '✔️'
+    nay = '❌'
+
+    embed = discord.Embed(title=f"Are you sure that you want to kick {user.name}", color = ctx.author.color)
+    message = await ctx.send(embed=embed)
+   
+    await message.add_reaction(yas)
+    await message.add_reaction(nay)
+    
+    valid_reactions = ['✔️', '❌']
+    
+    def check(reaction, user):
+        return user == ctx.author and str(reaction.emoji) in valid_reactions
+    try:
+        reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
+    except asyncio.TimeoutError:
+        await ctx.send("Cancelled...")
+    
+    if str(reaction.emoji) == yas:
+        embed = discord.Embed(title=f"{user.name} has been kicked", description="That must be painfull", color=discord.Color.dark_red())
+        embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
+        return await ctx.send(embed=embed)
+    
+    await ctx.send("Abondoned...") 
       
 #Ekonomi Komutları 
 
