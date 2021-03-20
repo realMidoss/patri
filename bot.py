@@ -404,6 +404,7 @@ async def kick(ctx,user:discord.Member, *, arg):
 
     if user==ctx.author:
         await ctx.send("You can't kick yourself. It's not 1984")
+        return
         
     yas = '✔️'
     nay = '❌'
