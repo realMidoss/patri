@@ -389,6 +389,8 @@ async def kick(ctx,user:discord.Member = None):
       
 #Ekonomi Komutları 
 
+#Ekonomi Komutları 
+
 amounts = {}
 
 @bot.event
@@ -405,7 +407,7 @@ async def on_ready():
 async def balance(ctx):
     id = str(ctx.message.author.id)
     if id in amounts:
-        await ctx.send("You have {} beans on your account!".format(amounts[id]))
+        await ctx.send("You have {} beans!".format(amounts[id]))
     else:
         await ctx.send("You do not have an account use register command in order to create one!")
 
@@ -414,7 +416,7 @@ async def register(ctx):
     id = str(ctx.message.author.id)
     if id not in amounts:
         amounts[id] = 100
-        await ctx.send("You are now registered")
+        await ctx.send("Welcome to bean club lad! I am giving you 100 beans")
         _save()
     else:
         await ctx.send("You already have an account")
@@ -428,7 +430,7 @@ async def transfer(ctx, amount: int, other: discord.Member):
     elif other_id not in amounts:
         await ctx.send("The other party does not have an account")
     elif amounts[primary_id] < amount:
-        await ctx.send("You cannot afford this transaction")
+        await ctx.send("You cannot afford this")
     else:
         amounts[primary_id] -= amount
         amounts[other_id] += amount
@@ -475,7 +477,7 @@ async def help(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Economy Commands", value="Will be avaible in the future")
+    embed.add_field(name="Economy Commands", value="balance, register, safe, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, tsun, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
