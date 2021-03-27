@@ -389,8 +389,6 @@ async def kick(ctx,user:discord.Member = None):
       
 #Ekonomi Komutları 
 
-#Ekonomi Komutları 
-
 amounts = {}
 
 @bot.event
@@ -445,27 +443,19 @@ def _save():
 @bot.command()
 async def save():
     _save()
+    await ctx.send("saved")
 
 @bot.command()
 async def work(ctx):
 
-    workv = [
-    5,
-    10,
-    12,
-    15,
-    20,
-    35,
-    40,
-    70 
-    ]
+    earned = random.randint(5, 70) 
 
     id = str(ctx.message.author.id)
     if id not in amounts:
         await ctx.send("You do not have an account. So we can not pay u")   
     else:
-        amounts[id] += random.choice(workv)
-        await ctx.send(f"You worked hard and got some beans")
+        amounts[id] += earned 
+        await ctx.send(f"You worked hard and got {earned} beans")
     _save()
 
 #help command
@@ -477,7 +467,7 @@ async def help(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Economy Commands", value="balance, register, safe, transfer, work")
+    embed.add_field(name="Economy Commands", value="balance, register, save, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, tsun, warn, question")
     embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
