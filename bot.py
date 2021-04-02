@@ -505,7 +505,10 @@ async def söv(ctx, user:discord.Member = None):
     "Weeb'in oğlu",
     "Sana açılan ilim irfan yuvalarının menteşelerini sikeyim",
     "Bacına telif hakkı koyayım",
-    "Götüne kürek sokayım, çocuklara tahteravalli yapayım",]
+    "Götüne kürek sokayım, çocuklara tahteravalli yapayım",
+    "Ebeni kaçırıp ormana atayım, sırtına bal sürüp ayılara siktireyim",
+    "Seni müjdeleyen doktoru sikiyim",
+    "Halimize şükretmeliyiz. Senin gibi olmak da vardı"]
     
     if user is None:
         await ctx.send("kime söveyim amk?")
