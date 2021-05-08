@@ -5,7 +5,6 @@ from urllib import parse, request
 import re
 import random
 import asyncio
-import json
 
 bot = commands.Bot(command_prefix=["patri ", "Patri ","p ","P "], help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
@@ -387,24 +386,6 @@ async def kick(ctx,user:discord.Member = None):
     embed = discord.Embed(title=f"{user.name} has been kicked", color=discord.Color.dark_red())
     embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
     await ctx.send(embed=embed)
-
-#Oylama Komutu
-
-@bot.command()
-async def vote(ctx, *, arg, options: str):
-    
-    emoji_numbers = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
-
-    embed = discord.Embed(title=f"{arg}", description=f"{str(options)}", color=ctx.author.color)
-    embed.set_thumbnail(url=ctx.author.avatar_url)
-    message = await ctx.send(embed=embed)
-
-    if 1 < len(options) <= 5:
-        for i in range(len(options)):
-            await message.add_reaction(emoji_numbers[i])
-    else:
-        await ctx.send("You need to ask a question and give at least 2 answers.")
-
       
 #Ekonomi Komutları 
 
@@ -477,8 +458,8 @@ async def work(ctx):
         await ctx.send(f"You worked hard and got {earned} beans")
     _save()
 
-#Vote Command Thanks to help of Luna
-
+ #Vote Command (Thanks to Luna)
+    
 @bot.command()
 async def vote(ctx, *, arg):
 
@@ -516,7 +497,7 @@ async def vote(ctx, *, arg):
         await message.add_reaction(three)
         await message.add_reaction(four)
         await message.add_reaction(five)
-
+    
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -528,7 +509,7 @@ async def help(ctx):
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Economy Commands", value="balance, register, save, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, tsun, warn, question")
-    embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info, vote")
+    embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
     
     await ctx.send(embed=embed)
 
@@ -567,13 +548,7 @@ async def söv(ctx, user:discord.Member = None):
     "Götüne kürek sokayım, çocuklara tahteravalli yapayım",
     "Ebeni kaçırıp ormana atayım, sırtına bal sürüp ayılara siktireyim",
     "Seni müjdeleyen doktoru sikiyim",
-    "Halimize şükretmeliyiz. Senin gibi olmak da vardı",
-    "Senin kârını sikerim",
-    "Karının karnına Ermeni yarrağı saplayayım",
-    "Ananın amını yeni kategori açana dek sikeyim",
-    "Ananı uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
-    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"
-    ]
+    "Halimize şükretmeliyiz. Senin gibi olmak da vardı"]
     
     if user is None:
         await ctx.send("kime söveyim amk?")
