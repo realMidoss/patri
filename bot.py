@@ -537,7 +537,7 @@ async def f35(ctx):
 
 @bot.command()
 async def söv(ctx, user:discord.Member = None):
-
+    
     kufurler = [
     "Senin ben yedi ceddini dere başında sikeyim",
     "Yedi ceddinin adet suyuna ekmek banayım ",
@@ -548,8 +548,13 @@ async def söv(ctx, user:discord.Member = None):
     "Götüne kürek sokayım, çocuklara tahteravalli yapayım",
     "Ebeni kaçırıp ormana atayım, sırtına bal sürüp ayılara siktireyim",
     "Seni müjdeleyen doktoru sikiyim",
-    "Halimize şükretmeliyiz. Senin gibi olmak da vardı"]
-    
+    "Halimize şükretmeliyiz. Senin gibi olmak da vardı",
+    "Senin kârını sikerim",
+    "Karının karnına Ermeni yarrağı saplayayım",
+    "Ananın amını yeni kategori açana dek sikeyim",
+    "Ananı uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
+    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"]
+
     if user is None:
         await ctx.send("kime söveyim amk?")
         return
