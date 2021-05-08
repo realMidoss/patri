@@ -5,6 +5,7 @@ from urllib import parse, request
 import re
 import random
 import asyncio
+import json
 
 bot = commands.Bot(command_prefix=["patri ", "Patri ","p ","P "], help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
@@ -386,6 +387,24 @@ async def kick(ctx,user:discord.Member = None):
     embed = discord.Embed(title=f"{user.name} has been kicked", color=discord.Color.dark_red())
     embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
     await ctx.send(embed=embed)
+
+#Oylama Komutu
+
+@bot.command()
+async def vote(ctx, *, arg, options: str):
+    
+    emoji_numbers = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
+
+    embed = discord.Embed(title=f"{arg}", description=f"{str(options)}", color=ctx.author.color)
+    embed.set_thumbnail(url=ctx.author.avatar_url)
+    message = await ctx.send(embed=embed)
+
+    if 1 < len(options) <= 5:
+        for i in range(len(options)):
+            await message.add_reaction(emoji_numbers[i])
+    else:
+        await ctx.send("You need to ask a question and give at least 2 answers.")
+
       
 #Ekonomi Komutları 
 
@@ -458,8 +477,8 @@ async def work(ctx):
         await ctx.send(f"You worked hard and got {earned} beans")
     _save()
 
- #Vote Command (Thanks to Luna)
-    
+#Vote Command Thanks to help of Luna
+
 @bot.command()
 async def vote(ctx, *, arg):
 
@@ -497,7 +516,7 @@ async def vote(ctx, *, arg):
         await message.add_reaction(three)
         await message.add_reaction(four)
         await message.add_reaction(five)
-    
+
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -538,9 +557,6 @@ async def f35(ctx):
 @bot.command()
 async def söv(ctx, user:discord.Member = None):
 
-@bot.command()
-async def söv(ctx, user:discord.Member = None):
-
     kufurler = [
     "Senin ben yedi ceddini dere başında sikeyim",
     "Yedi ceddinin adet suyuna ekmek banayım ",
@@ -556,7 +572,8 @@ async def söv(ctx, user:discord.Member = None):
     "Karının karnına Ermeni yarrağı saplayayım",
     "Ananın amını yeni kategori açana dek sikeyim",
     "Ananı uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
-    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"]
+    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"
+    ]
     
     if user is None:
         await ctx.send("kime söveyim amk?")
