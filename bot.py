@@ -538,7 +538,7 @@ async def f35(ctx):
 @bot.command()
 async def söv(ctx, user:discord.Member = None):
 
-    @bot.command()
+@bot.command()
 async def söv(ctx, user:discord.Member = None):
 
     kufurler = [
