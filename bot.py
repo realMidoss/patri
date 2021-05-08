@@ -556,8 +556,7 @@ async def söv(ctx, user:discord.Member = None):
     "Karının karnına Ermeni yarrağı saplayayım",
     "Ananın amını yeni kategori açana dek sikeyim",
     "Ananı uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
-    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"
-    ]
+    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"]
     
     if user is None:
         await ctx.send("kime söveyim amk?")
