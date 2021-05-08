@@ -458,6 +458,46 @@ async def work(ctx):
         await ctx.send(f"You worked hard and got {earned} beans")
     _save()
 
+ #Vote Command (Thanks to Luna)
+    
+@bot.command()
+async def vote(ctx, *, arg):
+
+    one = '1️⃣'
+    two = '2️⃣'
+    three = '3️⃣'
+    four = '4️⃣'
+    five = '5️⃣'
+
+    embed = discord.Embed(title=f"{arg[:-1]}", color=ctx.author.color)
+    embed.set_thumbnail(url=ctx.author.avatar_url)
+    message = await ctx.send(embed=embed)
+
+    last = int(arg[-1])
+
+    if last <= 1:
+        await ctx.send('You need at least two options to make a poll!')
+    elif last > 5:
+        await ctx.send("You can't add more than 5 choices")
+    elif last == 2:
+        await message.add_reaction(one)
+        await message.add_reaction(two)
+    elif last == 3:
+        await message.add_reaction(one)
+        await message.add_reaction(two)
+        await message.add_reaction(three)
+    elif last == 4:
+        await message.add_reaction(one)
+        await message.add_reaction(two)
+        await message.add_reaction(three)
+        await message.add_reaction(four)
+    elif last == 5:
+        await message.add_reaction(one)
+        await message.add_reaction(two)
+        await message.add_reaction(three)
+        await message.add_reaction(four)
+        await message.add_reaction(five)
+    
 #help command
 
 @bot.group(invoke_without_command=True)
