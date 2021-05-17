@@ -473,6 +473,12 @@ async def work(ctx):
         embed.set_thumbnail(url="https://freepikpsd.com/wp-content/uploads/2019/10/tin-of-beans-png-transparent-tin-of-beanspng-images-pluspng-png-baked-beans-650_650.png")
 
         await ctx.send(embed=embed)
+
+    pass
+
+    if id not in amounts:
+        work.reset_cooldown(ctx)
+
     _save()
 @work.error
 async def work_error(ctx, error):
