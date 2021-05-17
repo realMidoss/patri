@@ -396,7 +396,7 @@ async def pfp(ctx, user:discord.Member = None):
     embed = discord.Embed(title=f"{ctx.author.name} asks to take a closer look at {user.name}", color=discord.Color.red())
     embed.set_image(url=user.avatar_url)
 
-    await ctx.send(embed=embed)      
+    await ctx.send(embed=embed)     
       
 #Ekonomi Komutları 
 
