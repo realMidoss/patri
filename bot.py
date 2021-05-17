@@ -516,7 +516,7 @@ async def help(ctx):
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Economy Commands", value="balance, register, save, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, tsun, warn, question")
-    embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info")
+    embed.add_field(name="Usefull Commands", value="HeroFighte, pfp, ping, poll, info")
     
     await ctx.send(embed=embed)
 
