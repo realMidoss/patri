@@ -389,8 +389,12 @@ async def kick(ctx,user:discord.Member = None):
     
 @bot.command()
 async def pfp(ctx, user:discord.Member = None):
+    
+    if user is None:
+        user=ctx.author
+    
     embed = discord.Embed(title=f"{ctx.author.name} asks to take a closer look at {user.name}", color=discord.Color.red())
-    embed.set_image(url=ctx.user.avatar_url)
+    embed.set_image(url=user.avatar_url)
 
     await ctx.send(embed=embed)      
       
