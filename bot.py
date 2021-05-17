@@ -386,6 +386,13 @@ async def kick(ctx,user:discord.Member = None):
     embed = discord.Embed(title=f"{user.name} has been kicked", color=discord.Color.dark_red())
     embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
     await ctx.send(embed=embed)
+    
+@bot.command()
+async def pfp(ctx, user:discord.Member = None):
+    embed = discord.Embed(title=f"{ctx.author.name} asks to take a closer look at {user.name}", color=discord.Color.red())
+    embed.set_image(url=ctx.user.avatar_url)
+
+    await ctx.send(embed=embed)      
       
 #Ekonomi Komutları 
 
