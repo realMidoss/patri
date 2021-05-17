@@ -5,6 +5,7 @@ from urllib import parse, request
 import re
 import random
 import asyncio
+import json
 
 bot = commands.Bot(command_prefix=["patri ", "Patri ","p ","P "], help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
@@ -386,7 +387,7 @@ async def kick(ctx,user:discord.Member = None):
     embed = discord.Embed(title=f"{user.name} has been kicked", color=discord.Color.dark_red())
     embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
     await ctx.send(embed=embed)
-    
+
 @bot.command()
 async def pfp(ctx, user:discord.Member = None):
     
@@ -396,7 +397,7 @@ async def pfp(ctx, user:discord.Member = None):
     embed = discord.Embed(title=f"{ctx.author.name} asks to take a closer look at {user.name}", color=discord.Color.red())
     embed.set_image(url=user.avatar_url)
 
-    await ctx.send(embed=embed)     
+    await ctx.send(embed=embed)
       
 #Ekonomi Komutları 
 
@@ -457,20 +458,35 @@ async def save():
     await ctx.send("saved")
 
 @bot.command()
+@commands.cooldown(1, 43200, commands.BucketType.guild)
 async def work(ctx):
 
-    earned = random.randint(5, 70) 
+    earned = random.randint(30, 170) 
 
     id = str(ctx.message.author.id)
     if id not in amounts:
         await ctx.send("You do not have an account. So we can not pay u")   
     else:
         amounts[id] += earned 
-        await ctx.send(f"You worked hard and got {earned} beans")
-    _save()
+        
+        embed=discord.Embed(title="Work Work Work!", description=f"You worked hard and got {earned} beans", color = ctx.author.color)
+        embed.set_thumbnail(url="https://freepikpsd.com/wp-content/uploads/2019/10/tin-of-beans-png-transparent-tin-of-beanspng-images-pluspng-png-baked-beans-650_650.png")
 
- #Vote Command (Thanks to Luna)
-    
+        await ctx.send(embed=embed)
+    _save()
+@work.error
+async def work_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        msg = "You can only work once in 12 hours \n Next work will be avaible in: {:.2f}s".format(error.retry_after)
+        
+        embed=discord.Embed(title="Bro chill!", description=f"{msg}", color = ctx.author.color)    
+        embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+        await ctx.send(embed=embed)
+    else:
+        raise error
+
+#Vote Command Thanks to help of Luna
+
 @bot.command()
 async def vote(ctx, *, arg):
 
@@ -508,7 +524,7 @@ async def vote(ctx, *, arg):
         await message.add_reaction(three)
         await message.add_reaction(four)
         await message.add_reaction(five)
-    
+
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -520,7 +536,7 @@ async def help(ctx):
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Economy Commands", value="balance, register, save, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, tsun, warn, question")
-    embed.add_field(name="Usefull Commands", value="HeroFighte, pfp, ping, poll, info")
+    embed.add_field(name="Usefull Commands", value="HeroFighte, ping, poll, info, vote")
     
     await ctx.send(embed=embed)
 
@@ -548,7 +564,7 @@ async def f35(ctx):
 
 @bot.command()
 async def söv(ctx, user:discord.Member = None):
-    
+
     kufurler = [
     "Senin ben yedi ceddini dere başında sikeyim",
     "Yedi ceddinin adet suyuna ekmek banayım ",
@@ -564,8 +580,9 @@ async def söv(ctx, user:discord.Member = None):
     "Karının karnına Ermeni yarrağı saplayayım",
     "Ananın amını yeni kategori açana dek sikeyim",
     "Ananı uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
-    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"]
-
+    "Ananı götünden omuriliğine kadar yararım, orospunun döleti seni"
+    ]
+    
     if user is None:
         await ctx.send("kime söveyim amk?")
         return
