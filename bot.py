@@ -161,14 +161,6 @@ async def kill(ctx,user:discord.Member = None):
     await ctx.send(embed=embed)    
 
 @bot.command()
-async def tsun(ctx):
-    
-    user = await bot.fetch_user(291094866778259457)
-    embed = discord.Embed(title=f"{ctx.author.name} thinks {user.name} is a tsundere!", description="Tsun tsun Hantsun!", color=discord.Color.magenta())
-    embed.set_image(url=user.avatar_url)
-    await ctx.send(embed=embed)
-
-@bot.command()
 async def bruh(ctx):
     
     embed = discord.Embed(title=f"{ctx.author.name} thinks its a bro moment", description="Bro moment is such a moment;", color=discord.Color.darker_gray())
