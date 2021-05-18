@@ -503,7 +503,7 @@ async def save():
     _save()
 
 @bot.command()
-@commands.cooldown(1, 43200, commands.BucketType.guild)
+@commands.cooldown(1, 43200, commands.BucketType.user)
 async def work(ctx):
 
     earned = random.randint(30, 170) 
