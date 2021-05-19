@@ -440,7 +440,7 @@ async def help(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Economy Commands", value="balance, register, save, shop, toss, transfer, work")
+    embed.add_field(name="Economy Commands", value="balance, register, shop, toss, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, warn, question")
     embed.add_field(name="Usefull Commands", value="pfp, ping, poll, info, vote")
     
@@ -464,9 +464,9 @@ async def on_ready():
 async def balance(ctx):
     id = str(ctx.message.author.id)
     if id in amounts:
-        await ctx.send("You have {} in the bank".format(amounts[id]))
+        await ctx.send("You have {} beans in the bank".format(amounts[id]))
     else:
-        await ctx.send("You do not have an account")
+        await ctx.send("You do not have an account. Create one with register command")
 
 @bot.command(pass_context=True)
 async def register(ctx):
@@ -541,16 +541,20 @@ async def work_error(ctx, error):
 async def toss(ctx, amount: int = None):
 
     if amount == None:
-        await ctx.send("You have to give some money before playing gamble")
+        await ctx.send("You have to give some beans before playing gamble")
         return
     
     A = amount
     user_id = str(ctx.message.author.id)
-    coin = random.randint(-A, 2*A)
+    coin = random.randint(-2*A, 2*A)
     
     if user_id not in amounts:
         await ctx.send("You do not have an account. So you can not play")   
         return
+    elif amount > amounts[user_id]:
+        await ctx.send("You don't have enough beans")
+        return
+
     else:
         
         amounts[user_id] += coin
@@ -594,7 +598,7 @@ async def shop(ctx):
         name = item["name"]
         price = item["price"]
         desc = item["description"]
-        em.add_field(name = name, value = f"{price} TL | {desc}")
+        em.add_field(name = name, value = f"{price} BEANS | {desc}")
 
     await ctx.send(embed = em)
 
@@ -652,3 +656,4 @@ async def söv(ctx, user:discord.Member = None):
     await ctx.send(f'{user.name}, {random.choice(kufurler)}')
 
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
+
