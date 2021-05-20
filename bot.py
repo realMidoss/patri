@@ -625,6 +625,7 @@ async def f35(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
+@commands.cooldown(5, 200, commands.BucketType.user)
 async def söv(ctx, user:discord.Member = None):
 
     kufurler = [
@@ -642,7 +643,8 @@ async def söv(ctx, user:discord.Member = None):
     "Karının karnına Ermeni yarrağı saplayayım",
     "Senin amını yeni kategori açana dek sikeyim",
     "Ebeni uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
-    "Seni ben götünden omuriliğine kadar yararım, orospunun döletinin müjdelediği seni"
+    "Seni ben götünden omuriliğine kadar yararım, orospunun döletinin müjdelediği seni",
+    "Ebeni çarprazlayayım."
     ]
     
     if user is None:
@@ -654,6 +656,17 @@ async def söv(ctx, user:discord.Member = None):
         return
 
     await ctx.send(f'{user.name}, {random.choice(kufurler)}')
+
+@söv.error
+async def toss_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        msg = "Ha Ha Bekle bakalım! \n Sonraki küfre: {:.2f}s".format(error.retry_after)
+        
+        embed=discord.Embed(title="Sal AMK", description=f"{msg}", color = ctx.author.color)    
+        embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+        await ctx.send(embed=embed)
+    else:
+        raise error
 
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
 
