@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from urllib import parse, request
-import re
+import datetime
 import random
 import asyncio
 
@@ -21,18 +21,7 @@ class subCog(commands.Cog, name="Sub"):
         
         await message.add_reaction(yas)
         await message.add_reaction(idk)
-        await message.add_reaction(nay)
-
-    @commands.command()
-    async def pfp(self, ctx, user:discord.Member = None):
-        
-        if user is None:
-            user=ctx.author
-        
-        embed = discord.Embed(title=f"{ctx.author.name} asks to take a closer look at {user.name}", color=discord.Color.red())
-        embed.set_image(url=user.avatar_url)
-
-        await ctx.send(embed=embed)
+        await message.add_reaction(nay)   
 
     @commands.command()
     async def vote(self, ctx, *, arg):
@@ -71,6 +60,49 @@ class subCog(commands.Cog, name="Sub"):
             await message.add_reaction(three)
             await message.add_reaction(four)
             await message.add_reaction(five)
+ 
+    @commands.command()
+    async def pfp(self, ctx, user:discord.Member = None):
+        
+        if user is None:
+            user=ctx.author
+        
+        embed = discord.Embed(title=f"{ctx.author.name} asks to take a closer look at {user.name}", color=discord.Color.red())
+        embed.set_image(url=user.avatar_url)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(pass_context=True)
+    async def question(self, ctx, *, arg = None):
+        variable = [
+            "sure",
+            "yes",
+            "hell no",
+            "Maybe",
+            "Mayhabs",
+            "Why not?",
+            "IDK",
+            "How the fuck I can know?",]
+    
+        if arg == None:
+            await ctx.send("You must ask a question")
+            return
+    
+        embed = discord.Embed(title=f"{ctx.author.name} asks for my wisdom!", description=f"{arg}", color = discord.Color.blue())
+        embed.add_field(name="My answer is...", value=(random.choice(variable)))
+        embed.set_thumbnail(url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCtMzoeQ8IGRoiYslQrnccanwkl7DtAJXTTQ&usqp=CAU")
+        
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def info(self, ctx):
+        embed = discord.Embed(title=f"{ctx.guild.name}", description="I am useless", timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
+        embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
+        embed.add_field(name="Server Region", value=f"{ctx.guild.region}")
+        embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
+        embed.set_thumbnail(url=ctx.guild.icon)
+    
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(subCog(bot))
