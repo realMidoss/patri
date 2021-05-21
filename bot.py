@@ -16,7 +16,7 @@ bot.add_cog(emCog(bot))
 
 @bot.event
 async def on_ready():
-    game = discord.Game("p help")    
+    game = discord.Game("Patri help")    
     await bot.change_presence(status=discord.Status.idle, activity=game)
 
 #Basic Commands
