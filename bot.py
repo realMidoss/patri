@@ -15,8 +15,7 @@ bot.add_cog(subCog(bot))
 
 @bot.event
 async def on_ready():
-    game = discord.Game("p help")
-    print("Bot is online")
+    game = discord.Game("p help")    
     await bot.change_presence(status=discord.Status.idle, activity=game)
 
 #Base Commands
