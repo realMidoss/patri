@@ -94,13 +94,12 @@ class subCog(commands.Cog, name="Sub"):
         
         await ctx.send(embed=embed)
 
-    @commands.command()
+       @commands.command()
     async def info(self, ctx):
-        embed = discord.Embed(title=f"{ctx.guild.name}", description="I am useless", timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
+        embed = discord.Embed(title=f"{ctx.guild.name}", description="I'm just me!", timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
         embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
         embed.add_field(name="Server Region", value=f"{ctx.guild.region}")
         embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
-        embed.set_thumbnail(url=ctx.guild.icon)
     
         await ctx.send(embed=embed)
 
