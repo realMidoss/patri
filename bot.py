@@ -1,40 +1,24 @@
 import discord
 from discord.ext import commands
 import datetime
-from urllib import parse, request
-import re
 import random
 import asyncio
 import json
+from cogs.Turkish import TRCog
+from cogs.sub import subCog
+
 
 bot = commands.Bot(command_prefix=["patri ", "Patri ","p ","P "], help_command=None, allowed_mentions=discord.AllowedMentions(roles=False, users=False, everyone=False))
 
-#Poll Komutu 
-
-@bot.command()
-async def poll(ctx, *, arg):
-    
-    yas = '✔️' 
-    idk = '♻️'
-    nay = '❌'
-    
-    embed = discord.Embed(title=f"{ctx.author.name} asks:", description=f"{arg}", color=ctx.author.color)
-    embed.set_thumbnail(url=ctx.author.avatar_url)
-    message = await ctx.send(embed=embed)
-    
-    await message.add_reaction(yas)
-    await message.add_reaction(idk)
-    await message.add_reaction(nay)
-
-
-#bot events
+bot.add_cog(TRCog(bot))
+bot.add_cog(subCog(bot))
 
 @bot.event
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name="patri help"))
-    print('I am redy')
+    print('I am ready')
 
-#Text Commands
+#Base Commands
 
 @bot.command(pass_context=True)
 async def question(ctx, *, arg = None):
@@ -102,8 +86,6 @@ async def HeroFighte(ctx):
     embed.set_image(url=random.choice(hero))
 
     await ctx.send(embed=embed)
-
-#Name Based Commands
 
 @bot.command()
 async def warn(ctx,user:discord.Member, *, arg): 
@@ -246,14 +228,6 @@ async def suck(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def çay(ctx):
-
-    embed = discord.Embed(title=f"{ctx.author.name} made tea and grabs a glass of it. Anyone else wants?", description="tea is great", color=discord.Color.red())
-    embed.set_image(url="https://i.pinimg.com/originals/fd/35/6b/fd356b3bf3fe3a3839efa654aaf52d61.gif")
-
-    await ctx.send(embed=embed)
-
-@bot.command()
 async def F(ctx):
 
     Fv = [
@@ -380,57 +354,6 @@ async def kick(ctx,user:discord.Member = None):
     embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
     await ctx.send(embed=embed)
 
-@bot.command()
-async def pfp(ctx, user:discord.Member = None):
-    
-    if user is None:
-        user=ctx.author
-    
-    embed = discord.Embed(title=f"{ctx.author.name} asks to take a closer look at {user.name}", color=discord.Color.red())
-    embed.set_image(url=user.avatar_url)
-
-    await ctx.send(embed=embed)
-
-#Vote Command Thanks to help of Luna
-
-@bot.command()
-async def vote(ctx, *, arg):
-
-    one = '1️⃣'
-    two = '2️⃣'
-    three = '3️⃣'
-    four = '4️⃣'
-    five = '5️⃣'
-
-    embed = discord.Embed(title=f"{arg[:-1]}", color=ctx.author.color)
-    embed.set_thumbnail(url=ctx.author.avatar_url)
-    message = await ctx.send(embed=embed)
-
-    last = int(arg[-1])
-
-    if last <= 1:
-        await ctx.send('You need at least two options to make a poll!')
-    elif last > 5:
-        await ctx.send("You can't add more than 5 choices")
-    elif last == 2:
-        await message.add_reaction(one)
-        await message.add_reaction(two)
-    elif last == 3:
-        await message.add_reaction(one)
-        await message.add_reaction(two)
-        await message.add_reaction(three)
-    elif last == 4:
-        await message.add_reaction(one)
-        await message.add_reaction(two)
-        await message.add_reaction(three)
-        await message.add_reaction(four)
-    elif last == 5:
-        await message.add_reaction(one)
-        await message.add_reaction(two)
-        await message.add_reaction(three)
-        await message.add_reaction(four)
-        await message.add_reaction(five)
-
 #help command
 
 @bot.group(invoke_without_command=True)
@@ -440,7 +363,7 @@ async def help(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Economy Commands", value="balance, register, shop, toss, transfer, work")
+    embed.add_field(name="Economy Commands", value="balance, register, save, shop, toss, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, warn, question")
     embed.add_field(name="Usefull Commands", value="pfp, ping, poll, info, vote")
     
@@ -602,71 +525,4 @@ async def shop(ctx):
 
     await ctx.send(embed = em)
 
-#easter eggs (Burdan sonrası Türklere hitap etmektedir)
-
-@bot.group(invoke_without_command=True)
-async def yumurtalar(ctx):
-
-    embed = discord.Embed(title="Yüce Türk Milletine Armağan olsun", description="Sürpriz Yumurta Komutları")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/770041004073418822.png?v=1")
-    
-    embed.add_field(name="yumurtalar", value="Bu menüyü açar", inline=False)
-    embed.add_field(name="Ağlama Komutları", value="f35")
-    embed.add_field(name="Gır Gır Komutları", value="çay, söv")
-    
-    await ctx.send(embed=embed)
-
-@bot.command()
-async def f35(ctx):
-
-    embed = discord.Embed(title=f"{ctx.author.name} f35lere bakıyor ve ağlıyor")
-    embed.set_image(url="https://img.piri.net/mnresize/840/-/resim/imagecrop/2019/12/10/11/45/resized_b3d5f-f1d85093mansetc.jpg")
-
-    await ctx.send(embed=embed)
-
-@bot.command()
-@commands.cooldown(5, 200, commands.BucketType.user)
-async def söv(ctx, user:discord.Member = None):
-
-    kufurler = [
-    "Senin ben yedi ceddini dere başında sikeyim",
-    "Yedi ceddinin adet suyuna ekmek banayım ",
-    "Senin gibilerin hak ettiği tek yer sikimin ucudur ama kendimi boka bulamak istemiyorum",
-    "Weeb'in oğlu",
-    "Sana açılan ilim irfan yuvalarının menteşelerini sikeyim",
-    "Bacına telif hakkı koyayım",
-    "Götüne kürek sokayım, çocuklara tahteravalli yapayım",
-    "Ebeni kaçırıp ormana atayım, sırtına bal sürüp ayılara siktireyim",
-    "Seni müjdeleyen doktoru sikiyim",
-    "Halimize şükretmeliyiz. Senin gibi olmak da vardı",
-    "Senin kârını sikerim",
-    "Karının karnına Ermeni yarrağı saplayayım",
-    "Senin amını yeni kategori açana dek sikeyim",
-    "Ebeni uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
-    "Seni ben götünden omuriliğine kadar yararım, orospunun döletinin müjdelediği seni",
-    "Ebeni çarprazlayayım."
-    ]
-    
-    if user is None:
-        await ctx.send("kime söveyim amk?")
-        return
-
-    if user==ctx.author:
-        await ctx.send("Kendine saygın olsun biraz.")
-        return
-
-    await ctx.send(f'{user.name}, {random.choice(kufurler)}')
-
-@söv.error
-async def toss_error(ctx, error):
-    if isinstance(error, commands.CommandOnCooldown):
-        msg = "Ha Ha Bekle bakalım! \n Sonraki küfre: {:.2f}s".format(error.retry_after)
-        
-        embed=discord.Embed(title="Sal AMK", description=f"{msg}", color = ctx.author.color)    
-        embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
-        await ctx.send(embed=embed)
-    else:
-        raise error
-
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
-
