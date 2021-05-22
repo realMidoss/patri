@@ -255,5 +255,23 @@ async def shop(ctx):
         em.add_field(name = name, value = f"{price} BEANS | {desc}")
 
     await ctx.send(embed = em)
+    
+@bot.command()
+async def add(ctx, amount: int = None, user: discord.Member = None):
 
+    ID = 354316211657506827
+    user_id = str(user.id)
+    
+    if ctx.message.author.id == ID:
+        amounts[user_id] += amount
+        await ctx.send("Transaction complete")
+    else:
+        await ctx.send('You are not allowed to execute this command!')
+    
+    def _save():
+        with open('amounts.json', 'w') as f:
+            json.dump(amounts, f)
+
+    _save()
+    
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
