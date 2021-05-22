@@ -257,7 +257,7 @@ async def shop(ctx):
     await ctx.send(embed = em)
     
 @bot.command()
-async def add(ctx, amount: int = None, user: discord.Member = None):
+async def add(ctx, amount: int, user: discord.Member):
 
     ID = 354316211657506827
     user_id = str(user.id)
@@ -273,5 +273,4 @@ async def add(ctx, amount: int = None, user: discord.Member = None):
             json.dump(amounts, f)
 
     _save()
-    
 bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
