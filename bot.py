@@ -157,10 +157,10 @@ async def save():
     _save()
 
 @bot.command()
-@commands.cooldown(1, 43200, commands.BucketType.user)
+@commands.cooldown(1, 3600, commands.BucketType.user)
 async def work(ctx):
 
-    earned = random.randint(30, 170) 
+    earned = random.randint(50, 250) 
 
     id = str(ctx.message.author.id)
     if id not in amounts:
@@ -182,7 +182,7 @@ async def work(ctx):
 @work.error
 async def work_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
-        msg = "You can only work once in 12 hours \n Next work will be avaible in: {:.2f}s".format(error.retry_after)
+        msg = "You can only work once every hour \n Next work will be avaible in: {:.2f}s".format(error.retry_after)
         
         embed=discord.Embed(title="Bro chill!", description=f"{msg}", color = ctx.author.color)    
         embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
