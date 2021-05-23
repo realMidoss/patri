@@ -167,7 +167,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			raise error
 
 	@commands.command()
-	async def shop(ctx):
+	async def shop(self, ctx):
 		shop = [
 			{"name":"GAM Mug","price":100,"description":"A Mug for hot ones"},
 			{"name":"OC Figure of Mods","price":250,"description":"Show your love to best mods"},
