@@ -156,7 +156,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		else:
 			raise error
 
-	@commands.command()
+		@commands.command()
 	@commands.cooldown(5, 180, commands.BucketType.user)
 	async def flip(self, ctx, amount: int = None):
 		if amount == None or amount <= 0:
@@ -183,10 +183,10 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@flip.error
 	async def flip_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
-			msg = "Wow You are doing that so often! \n Wait for: {:.f}s".format(error.retry_after)
+			tossv = "You are doing that too often \n Wait for: {:.2f}s".format(error.retry_after)
 			
-			embed=discord.Embed(title="Wait for a second!!", description=f"{msg}", color = ctx.author.color)    
-			embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+			embed = discord.Embed(title="Slow Down", description=f"{tossv}", color = ctx.author.color)    
+			embed.set_thumbnail(url="https://www.pngkit.com/png/full/603-6030012_open-11-11-clock-png.png")
 			await ctx.send(embed=embed)
 		else:
 			raise error
@@ -225,10 +225,10 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@toss.error
 	async def toss_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
-			msg = "Wow You are doing that so often! \n Wait for: {:.f}s".format(error.retry_after)
+			tossv = "You are doing that too often \n Wait for: {:.2f}s".format(error.retry_after)
 			
-			embed=discord.Embed(title="Wait for a second!!", description=f"{msg}", color = ctx.author.color)    
-			embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+			embed = discord.Embed(title="Slow Down", description=f"{tossv}", color = ctx.author.color)    
+			embed.set_thumbnail(url="https://www.pngkit.com/png/full/603-6030012_open-11-11-clock-png.png")
 			await ctx.send(embed=embed)
 		else:
 			raise error
