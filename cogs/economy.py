@@ -69,13 +69,20 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		if user.id in self.account_cache:
 			return self.account_cache[user.id]
 
+		# If this is still a None by the time we create the account, this user is considered "new"
+		current_balance = None
+
 		db_row = await self.conn.fetchrow("""
 			SELECT (beans)
 			FROM beans_balance
 			WHERE discord_snowflake = $1
 		""", user.id)
 
-		balance_object = UserBeanAccount(user.id, db_row.get("beans"))
+		# If the user *has* a row, we need to make sure we get the balance.
+		if db_row is not None:
+			current_balance = db_row.get("beans")
+
+		balance_object = UserBeanAccount(user.id, current_balance)
 		self.account_cache[user.id] = balance_object
 
 		return balance_object
