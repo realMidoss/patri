@@ -33,7 +33,7 @@ class UserBeanAccount:
 			self.touch()
 
 	def remove(self, amount):
-		if amount < 0:
+		if amount > 0:
 			self.balance = self.balance - amount
 			self.needs_db_commit = True
 			self.touch()
