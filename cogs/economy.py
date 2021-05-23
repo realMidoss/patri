@@ -132,6 +132,29 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send(embed=embed)
 		else:
 			raise error
+			
+	@commands.command()
+	@commands.cooldown(1, 600, commands.BucketType.user)
+	async def beg(self, ctx):
+		account = await self.get_user_account(ctx.message.author)
+		earned = random.randint(0, 100)
+		account.add(earned)
+
+		embed = discord.Embed(title="Gib Monex!", description=f"Well... If you don't wanna work {earned} beans", color = ctx.author.color)
+		embed.set_thumbnail(url="https://img.icons8.com/ios/452/beggar.png")
+
+		await ctx.send(embed=embed)
+
+	@work.error
+	async def work_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			msg = "You want money money and money eh? But you gotta wait begga \n Next beg will be avaible in: {:.2f}s".format(error.retry_after)
+			
+			embed = discord.Embed(title="Ahh... Shame", description=f"{msg}", color = ctx.author.color)    
+			embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+			await ctx.send(embed=embed)
+		else:
+			raise error
 
 	@commands.command()
 	@commands.cooldown(5, 180, commands.BucketType.user)
