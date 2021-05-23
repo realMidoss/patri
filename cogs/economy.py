@@ -182,11 +182,11 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 		await ctx.send(embed = em)
 
-	@commands.command
+	@commands.command()
 	async def add(self, ctx, amount:int, target:discord.Member):
 		if await ctx.message.author.is_owner():
 			target_balance = await self.get_user_account(target)
-			
+
 			# we're using set so we can actually add negative amounts if we want...
 			target_balance.set(target_balance.balance + amount)
 
