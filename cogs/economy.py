@@ -138,7 +138,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		else:
 			raise error
 
-	@commands.command()
+		@commands.command()
 	@commands.cooldown(1, 86400, commands.BucketType.user)
 	async def steal(self, ctx, amount: int, other_user: discord.Member):
 		
@@ -149,6 +149,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			return
 		elif amount > 150:
 			await ctx.send("Too risky. Forget it")
+			return
 
 		thief = await self.get_user_account(ctx.message.author)
 		victim = await self.get_user_account(other_user)
@@ -156,15 +157,15 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		if victim.balance < amount:
 			await ctx.send("Come on! They are poor enough...")
 			return
-		
-		if Chance > 0:
-			victim.remove(amount)
-			thief.add(amount)
-			await ctx.send("Just like GTA")
-		if Chance <= 0:
-			thief.remove(amount)
-			victim.add(amount)
-			await ctx.send("BUSTED - You lost the amount you tried to steal")
+		else:
+			if Chance > 0:
+				victim.remove(amount)
+				thief.add(amount)
+				await ctx.send("Just like GTA")
+			if Chance <= 0:
+				thief.remove(amount)
+				victim.add(amount)
+				await ctx.send("BUSTED - You lost the amount you tried to steal")        
 	@steal.error
 	async def steal_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
