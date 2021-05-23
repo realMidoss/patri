@@ -175,12 +175,6 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 		await ctx.send(embed = em)
 
-	@commands.command()
-	async def set_balance(self, ctx, amount:int):
-		account = await self.get_user_balance(ctx.message.author)
-		account.set(amount)
-		await ctx.send(f"You have now have {account.balance} beans in the bank")
-
 	@tasks.loop(seconds=10.0)
 	async def commit_updates_to_db(self):
 		# we can only commit to the database when it's available!
