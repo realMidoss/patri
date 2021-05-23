@@ -146,7 +146,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		await ctx.send(embed=embed)
 
 	@work.error
-	async def work_error(self, ctx, error):
+	async def beg_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
 			msg = "You want money money and money eh? But you gotta wait begga \n Next beg will be avaible in: {:.2f}s".format(error.retry_after)
 			
