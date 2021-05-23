@@ -143,32 +143,27 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	async def steal(self, ctx, amount: int = None, other_user: discord.Member = None):
 		
 		Chance = random.randint(-10, 10)
+		thief = await self.get_user_account(ctx.message.author)
+		victim = await self.get_user_account(other_user)
 		
 		if amount <= 0:
 			await ctx.send("Invalid amount")
-			ctx.command.reset_cooldown(ctx)
 			return
-		elif amount > 150:
+
+		if amount > 150:
 			await ctx.send("Too risky. Forget it")
-			ctx.command.reset_cooldown(ctx)
 			return
-		elif amount == None:
+		
+		if amount == None:
 			await ctx.send("Target?")
-			ctx.command.reset_cooldown(ctx)
 			return
 		
 		if other_user == None:
 			await ctx.send("How much?")
-			ctx.command.reset_cooldown(ctx)
-			return
-
-
-		thief = await self.get_user_account(ctx.message.author)
-		victim = await self.get_user_account(other_user)
+			return		
 
 		if victim.balance < amount:
 			await ctx.send("Come on! They are poor enough...")
-			ctx.command.reset_cooldown(ctx)
 			return
 		else:
 			if Chance > 0:
