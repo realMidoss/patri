@@ -138,7 +138,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		else:
 			raise error
 
-		@commands.command()
+	@commands.command()
 	@commands.cooldown(1, 86400, commands.BucketType.user)
 	async def steal(self, ctx, amount: int, other_user: discord.Member):
 		
