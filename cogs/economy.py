@@ -21,10 +21,12 @@ class UserBeanAccount:
 		self.touched = time.monotonic()
 
 	def set(self, amount):
-		if amount >= 0:
+		if amount > 0:
 			self.balance = amount
-			self.needs_db_commit = True
-			self.touch()
+		else:
+			self.balance = 0
+		self.needs_db_commit = True
+		self.touch()
 	
 	def add(self, amount):
 		if amount > 0:
@@ -184,11 +186,13 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	@commands.command()
 	async def add(self, ctx, amount:int, target:discord.Member):
-		if await ctx.message.author.is_owner():
+		if await self.bot.is_owner(ctx.message.author):
 			target_balance = await self.get_user_account(target)
 
 			# we're using set so we can actually add negative amounts if we want...
 			target_balance.set(target_balance.balance + amount)
+		else:
+			await ctx.send("You don't have permission to do that!")
 
 	@tasks.loop(seconds=10.0)
 	async def commit_updates_to_db(self):
