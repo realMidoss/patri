@@ -89,6 +89,9 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 		return balance_object
 
+
+	#Personal
+
 	@commands.command()
 	async def balance(self, ctx):
 		balance = await self.get_user_account(ctx.message.author)
@@ -110,6 +113,8 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			destination_account.add(amount)
 			await ctx.send("Transaction complete")
 
+	#Self Commands
+	
 	@commands.command()
 	@commands.cooldown(1, 3600, commands.BucketType.user)
 	async def work(self, ctx):
@@ -133,6 +138,46 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		else:
 			raise error
 
+	@commands.command()
+	@commands.cooldown(1, 86400, commands.BucketType.user)
+	async def steal(self, ctx, amount: int, other_user: discord.Member):
+		
+		Chance = random.randint(-10, 10)
+		
+		if amount <= 0:
+			await ctx.send("Invalid amount")
+			return
+		elif amount > 150:
+			await ctx.send("Too risky. Forget it")
+
+		thief = await self.get_user_account(ctx.message.author)
+		victim = await self.get_user_account(other_user)
+
+		if victim.balance < amount:
+			await ctx.send("Come on! They are poor enough...")
+			return
+		
+		if Chance > 0:
+			victim.remove(amount)
+			thief.add(amount)
+			await ctx.send("Just like GTA")
+		if Chance <= 0:
+			thief.remove(amount)
+			victim.add(amount)
+			await ctx.send("BUSTED - You lost the amount you tried to steal")
+	@steal.error
+	async def steal_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			stl = "Gotta wait 24h \n I think you should wait for: {:.2f}s".format(error.retry_after)
+			
+			embed = discord.Embed(title="Let's not...", description=f"{stl}", color = ctx.author.color)    
+			embed.set_thumbnail(url="https://pngimg.com/uploads/prison/prison_PNG45.png")
+			await ctx.send(embed=embed)
+		else:
+			raise error
+
+	#Gamble
+	
 	@commands.command()
 	@commands.cooldown(1, 600, commands.BucketType.user)
 	async def beg(self, ctx):
