@@ -156,7 +156,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		else:
 			raise error
 
-		@commands.command()
+	@commands.command()
 	@commands.cooldown(5, 180, commands.BucketType.user)
 	async def flip(self, ctx, amount: int = None):
 		if amount == None or amount <= 0:
@@ -237,7 +237,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@commands.command()
 	async def shop(self, ctx):
 		shop = [
-			{"name":"GAM Mug","price":100,"description":"A Mug for hot ones"},
+			{"name":"GAM Mug","price":100,"description":"A Mug for flip ones"},
 			{"name":"OC Figure of Mods","price":250,"description":"Show your love to best mods"},
 			{"name":"Body Pillow","price":500,"description":"For loners/cultured ones"}]   
 		em = discord.Embed(title = "Shop")
