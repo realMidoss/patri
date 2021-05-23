@@ -257,6 +257,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 			# we're using set so we can actually add negative amounts if we want...
 			target_balance.set(target_balance.balance + amount)
+			await ctx.send("Beanzzz!!")
 		else:
 			await ctx.send("You don't have permission to do that!")
 
