@@ -134,8 +134,31 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			raise error
 
 	@commands.command()
+	@commands.cooldown(1, 600, commands.BucketType.user)
+	async def beg(self, ctx):
+		account = await self.get_user_account(ctx.message.author)
+		earned = random.randint(0, 100)
+		account.add(earned)
+
+		embed = discord.Embed(title="Gib Monex!", description=f"Well... If you don't wanna work {earned} beans", color = ctx.author.color)
+		embed.set_thumbnail(url="https://img.icons8.com/ios/452/beggar.png")
+
+		await ctx.send(embed=embed)
+
+	@work.error
+	async def beg_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			beg = "You want money money and money eh? But you gotta wait begga \n Next beg will be avaible in: {:.2f}s".format(error.retry_after)
+			
+			embed = discord.Embed(title="Ahh... Shame", description=f"{beg}", color = ctx.author.color)    
+			embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+			await ctx.send(embed=embed)
+		else:
+			raise error
+
+	@commands.command()
 	@commands.cooldown(5, 180, commands.BucketType.user)
-	async def toss(self, ctx, amount: int = None):
+	async def hot(self, ctx, amount: int = None):
 		if amount == None or amount <= 0:
 			await ctx.send("You have to give some beans before playing gamble")
 			return
@@ -157,6 +180,46 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			embed.set_thumbnail(url="https://www.pngrepo.com/download/261646/coin-flip.png")
 			await ctx.send(embed=embed)
 
+	@hot.error
+	async def hot_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			msg = "Wow You are doing that so often! \n Wait for: {:.f}s".format(error.retry_after)
+			
+			embed=discord.Embed(title="Wait for a second!!", description=f"{msg}", color = ctx.author.color)    
+			embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+			await ctx.send(embed=embed)
+		else:
+			raise error
+
+	@commands.command()
+	@commands.cooldown(5, 180, commands.BucketType.user)
+	async def toss(self, ctx, amount: int = None):
+		
+		A = amount
+		
+		if amount == None or amount <= 0:
+			await ctx.send("You have to give some beans before playing gamble")
+			return
+
+		account = await self.get_user_account(ctx.message.author)
+
+		if amount > account.balance:
+			await ctx.send("You don't have enough beans")
+			return
+
+		tossv = random.randint(-2*A, 2*A)
+			
+		account.add(tossv)
+		
+		if tossv >0:
+			embed=discord.Embed(title="Toss!", description=f"You are lucky! You just won {tossv} beans", color = ctx.author.color)
+			embed.set_thumbnail(url="https://www.pngrepo.com/download/261646/coin-flip.png")
+			await ctx.send(embed=embed)
+		else:
+			embed = discord.Embed(title="Toss!", description=f"Ah unlucky... You lost {tossv} beans", color = ctx.author.color)
+			embed.set_thumbnail(url="https://www.pngrepo.com/download/261646/coin-flip.png")
+			await ctx.send(embed=embed)
+
 	@toss.error
 	async def toss_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
@@ -167,6 +230,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send(embed=embed)
 		else:
 			raise error
+
 
 	@commands.command()
 	async def shop(self, ctx):
