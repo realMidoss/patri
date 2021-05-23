@@ -158,7 +158,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	@commands.command()
 	@commands.cooldown(5, 180, commands.BucketType.user)
-	async def hot(self, ctx, amount: int = None):
+	async def flip(self, ctx, amount: int = None):
 		if amount == None or amount <= 0:
 			await ctx.send("You have to give some beans before playing gamble")
 			return
@@ -180,8 +180,8 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			embed.set_thumbnail(url="https://www.pngrepo.com/download/261646/coin-flip.png")
 			await ctx.send(embed=embed)
 
-	@hot.error
-	async def hot_error(self, ctx, error):
+	@flip.error
+	async def flip_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
 			msg = "Wow You are doing that so often! \n Wait for: {:.f}s".format(error.retry_after)
 			
