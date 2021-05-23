@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 import asyncio
 import json
+import sys
 from cogs.Turkish import TRCog
 from cogs.sub import subCog
 from cogs.em import emCog
@@ -273,4 +274,10 @@ async def add(ctx, amount: int, user: discord.Member):
             json.dump(amounts, f)
 
     _save()
-bot.run('NzQwOTQ1MDE3MDQ0MDc0NTcx.XywY0g.GRWZShHUoqP9KS6JfxVfAOve_34')
+
+# Run the bot with a token specified via the commandline (perhaps github project secrets could be used to hide the token too?)
+if len(sys.argv) < 2:
+    print("Missing a bot token! Please specify a bot token as the first command line argument.")
+else:
+    token = str(sys.argv[1])
+    bot.run(token)
