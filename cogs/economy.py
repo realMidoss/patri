@@ -139,7 +139,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			raise error
 
 	@commands.command()
-	@commands.cooldown(1, 86400, commands.BucketType.user)
+	@commands.cooldown(1, 43200, commands.BucketType.user)
 	async def steal(self, ctx, amount: int = None, other_user: discord.Member = None):
 		
 		Chance = random.randint(-10, 10)
@@ -177,7 +177,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@steal.error
 	async def steal_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
-			stl = "Gotta wait 24h \n I think you should wait for: {:.2f}s".format(error.retry_after)
+			stl = "Gotta wait 12h \n I think you should wait for: {:.2f}s".format(error.retry_after)
 			
 			embed = discord.Embed(title="Let's not...", description=f"{stl}", color = ctx.author.color)    
 			embed.set_thumbnail(url="https://pngimg.com/uploads/prison/prison_PNG45.png")
