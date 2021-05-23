@@ -209,15 +209,17 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 		tossv = random.randint(-2*A, 2*A)
 			
-		account.add(tossv)
+		
 		
 		if tossv >0:
 			embed=discord.Embed(title="Toss!", description=f"You are lucky! You just won {tossv} beans", color = ctx.author.color)
 			embed.set_thumbnail(url="https://www.pngrepo.com/download/261646/coin-flip.png")
+			account.add(tossv)
 			await ctx.send(embed=embed)
 		else:
 			embed = discord.Embed(title="Toss!", description=f"Ah unlucky... You lost {tossv} beans", color = ctx.author.color)
 			embed.set_thumbnail(url="https://www.pngrepo.com/download/261646/coin-flip.png")
+			account.remove(abs(tossv))
 			await ctx.send(embed=embed)
 
 	@toss.error
