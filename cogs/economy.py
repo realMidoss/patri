@@ -153,12 +153,21 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	@commands.command()
 	@commands.cooldown(1, 864000, commands.BucketType.user)
-	async def steal(self, ctx, amount: int, other_user: discord.Member):
+	async def steal(self, ctx, amount: int = None, other_user: discord.Member = None):
 		
 		Chance = random.randint(-10, 10)
 		thief = await self.get_user_account(ctx.message.author)
 		victim = await self.get_user_account(other_user)
-		
+
+		if amount == None:
+			await ctx.send("Enter an ammount")
+			self.steal.reset_cooldown(ctx)
+			return
+		if other_user == None:
+			await ctx.send("Who is the victim?")
+			self.steal.reset_cooldown(ctx)
+			return		
+
 		if amount <= 0:
 			await ctx.send("Invalid amount")
 			self.steal.reset_cooldown(ctx)
