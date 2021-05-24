@@ -94,16 +94,15 @@ async def HeroFighte(ctx):
     await ctx.send(embed=embed)
 
 #help command
-
 @bot.group(invoke_without_command=True)
 async def help(ctx):
 
-    embed = discord.Embed(title="Patri Bot", description="Basic Fun Bot for GAM \n thanks to Jaymo \n by Midoss", color = ctx.author.color)
+    embed = discord.Embed(title="Patri Bot", description="Basic Fun Bot for GAM \n by Midoss", color = ctx.author.color)
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
-    embed.add_field(name="Economy Commands", value="balance, beg, flip, shop, hax, toss, transfer, work")
-    embed.add_field(name="Fun Commands", value="ara, bruh, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, warn, question")
+    embed.add_field(name="Economy Commands", value="balance, steal, shop, toss, transfer, work")
+    embed.add_field(name="Fun Commands", value="ara, bruh, bonk, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, warn, question")
     embed.add_field(name="Useful Commands", value="pfp, ping, poll, info, vote")
     
     await ctx.send(embed=embed)
