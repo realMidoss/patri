@@ -259,6 +259,8 @@ class emCog(commands.Cog, name="Sub"):
 
         embed = discord.Embed(title=f"{ctx.author.name} Bonks {user.name}", description="Should have hurt", color=discord.Color.red())
         embed.set_image(url=bonkv)
+        
+        await ctx.send(embed=embed)
 
 
 def setup(commands):
