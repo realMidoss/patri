@@ -98,6 +98,18 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		await ctx.send(f"You have {balance.balance} beans in the bank")
 
 	@commands.command()
+	async def hax(self, ctx, user: discord.Member = None):
+		if user == None:
+			await ctx.send("You must mention someone!")
+			return
+		elif user == ctx.message.author:
+			await ctx.send("Use balance command for your own ammount :P")
+			return
+		
+		balance = await self.get_user_account(user)
+		await ctx.send(f"{user.name} have {balance.balance} beans in the bank")
+
+	@commands.command()
 	async def transfer(self, ctx, amount: int, other_user: discord.Member):
 		if amount <= 0:
 			await ctx.send("Invalid amount")
