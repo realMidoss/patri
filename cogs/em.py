@@ -245,6 +245,22 @@ class emCog(commands.Cog, name="Sub"):
         embed.set_image(url="https://media.tenor.com/images/27f16871c55a3376fa4bfdd76ac2ab5c/tenor.gif")
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def bonk(self, ctx, user:discord.Member = None):
+        if user is None:
+            await ctx.send("Mantion someone for god's sake")
+            return
+
+        if user==ctx.author:
+            await ctx.send("I wouldn't bonk myself")
+            return
+
+        bonkv = "https://media1.tenor.com/images/6493bee2be7ae168a5ef7a68cf751868/tenor.gif?itemid=17298755"
+
+        embed = discord.Embed(title=f"{ctx.author.name} Bonks {user.name}", description="Should have hurt", color=discord.Color.red())
+        embed.set_image(url=bonkv)
+
+
 def setup(commands):
     commands.add_cog(emCog(commands))
     print('Embed Commands are ready')

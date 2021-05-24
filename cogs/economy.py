@@ -5,6 +5,8 @@ from discord import message
 from discord.ext import commands, tasks
 import time
 
+from discord.ext.commands.errors import MemberNotFound
+
 class UserBeanAccount:
 	def __init__(self, user, balance):
 		self.user = user
@@ -90,7 +92,6 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 		return balance_object
 
-
 	#Personal
 
 	@commands.command()
@@ -111,7 +112,11 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		await ctx.send(f"{user.name} have {balance.balance} beans in the bank")
 
 	@commands.command()
-	async def transfer(self, ctx, amount: int, other_user: discord.Member):
+	async def transfer(self, ctx, other_user: discord.Member, amount: int = None):
+		
+		if amount == None:
+			amount = 1			
+				
 		if amount <= 0:
 			await ctx.send("Invalid amount")
 			return
@@ -153,7 +158,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	@commands.command()
 	@commands.cooldown(1, 864000, commands.BucketType.user)
-	async def steal(self, ctx, amount: int = None, other_user: discord.Member = None):
+	async def steal(self, ctx, other_user: discord.Member, amount: int = None,):
 		
 		Chance = random.randint(-10, 10)
 		thief = await self.get_user_account(ctx.message.author)
@@ -278,9 +283,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send("You don't have enough beans")
 			return
 
-		tossv = random.randint(-2*A, 2*A)
-			
-		
+		tossv = random.randint(-2*A, 2*A)		
 		
 		if tossv >0:
 			embed=discord.Embed(title="Toss!", description=f"You are lucky! You just won {tossv} beans", color = ctx.author.color)
@@ -320,7 +323,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			em.add_field(name = name, value = f"{price} BEANS | {desc}")
 
 		await ctx.send(embed = em)
-
+ 
 	@commands.command()
 	async def add(self, ctx, amount:int, target:discord.Member):
 		if await self.bot.is_owner(ctx.message.author):
