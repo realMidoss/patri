@@ -183,7 +183,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@commands.cooldown(1, 600, commands.BucketType.user)
 	async def beg(self, ctx):
 		account = await self.get_user_account(ctx.message.author)
-		earned = random.randint(0, 100)
+		earned = random.randint(0, 50)
 		account.add(earned)
 
 		embed = discord.Embed(title="Gib Monex!", description=f"Well... If you don't wanna work {earned} beans", color = ctx.author.color)
@@ -194,10 +194,10 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@beg.error
 	async def beg_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
-			beg = "You want money money and money eh? But you gotta wait begga \n Next beg will be avaible in: {:.2f}s".format(error.retry_after)
+			beg = "Lazy one eh? But you gotta wait begga \n Next beg will be avaible in: {:.2f}s".format(error.retry_after)
 			
-			embed = discord.Embed(title="Ahh... Shame", description=f"{beg}", color = ctx.author.color)    
-			embed.set_thumbnail(url="http://cdn.onlinewebfonts.com/svg/img_571830.png")
+			embed = discord.Embed(title="But! Wait!!", description=f"{beg}", color = ctx.author.color)    
+			embed.set_thumbnail(url="https://img.icons8.com/ios/452/white-beans.png")
 			await ctx.send(embed=embed)
 		else:
 			raise error
@@ -283,7 +283,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@commands.command()
 	async def shop(self, ctx):
 		shop = [
-			{"name":"GAM Mug","price":100,"description":"A Mug for flip ones"},
+			{"name":"GAM Mug","price":100,"description":"A Mug for hot ones"},
 			{"name":"OC Figure of Mods","price":250,"description":"Show your love to best mods"},
 			{"name":"Body Pillow","price":500,"description":"For loners/cultured ones"}]   
 		em = discord.Embed(title = "Shop")
