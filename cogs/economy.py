@@ -158,7 +158,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	@commands.command()
 	@commands.cooldown(1, 864000, commands.BucketType.user)
-	async def steal(self, ctx, other_user: discord.Member, amount: int = None,):
+	async def steal(self, ctx, other_user: discord.Member, amount: int = None):
 		
 		Chance = random.randint(-10, 10)
 		thief = await self.get_user_account(ctx.message.author)
