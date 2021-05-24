@@ -1,6 +1,7 @@
 import random
 import asyncpg
 import discord
+from discord import message
 from discord.ext import commands, tasks
 import time
 
@@ -160,20 +161,23 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		
 		if amount <= 0:
 			await ctx.send("Invalid amount")
+			self.steal.reset_cooldown(ctx)
 			return
 
 		if amount > 150:
-			await ctx.send("Too risky. Forget it")
+			await ctx.send("Stealing more than 150 beans is too risky! Just forget it...")
+			self.steal.reset_cooldown(ctx)
 			return	
 
 		if victim.balance < amount:
 			await ctx.send("Come on! They are poor enough...")
+			self.steal.reset_cooldown(ctx)
 			return
 		else:
 			if Chance > 0:
 				victim.remove(amount)
 				thief.add(amount)
-				await ctx.send("Just like GTA")
+				await ctx.send("Just like GTA...")
 			if Chance <= 0:
 				thief.remove(amount)
 				victim.add(amount)
