@@ -57,17 +57,17 @@ class TRCog(commands.Cog, name="Turkish"):
         "Ebeni uzaya göndereyim, yeni nesiller üretene dek uzaylılara siktireyim",
         "Seni ben götünden omuriliğine kadar yararım, orospunun döletinin müjdelediği seni",
         "Ebeni çarprazlayayım.",
-        "Seni satın alır, karını sana kuma yaparım."
-        "Allah benim canımı alsın da senin ölmüşlerini sikeyim."
-        "Senin ben ölmüş etine tenezzül eden karıncanın izzeti, nefsini sikeyim."
-        "Sikilen maymun; ıhlamur ağacına çıkarmış, onun için mi ağaçtan inmiyorsun canım?"
-        "Şam şeytanı kılıklı engerek orospusu seni..."
-        "Yunan Anadolu'ya girse, bu pezevenk enişte diye boynuna sarılır."
-        "Bana bak! Aklının sulu yerini sikerim senin."
-        "Senin dalağını alır, açılan deliği sikerim."
-        "Seni bir sikerim, bir hafta bulanık sıçarsın."
-        "Senin bacağındaki kılı sikiyim."
-        "Yalancıyı sikseler, senden hiç çıkarmazlardı."
+        "Seni satın alır, karını sana kuma yaparım.",
+        "Allah benim canımı alsın da senin ölmüşlerini sikeyim.",
+        "Senin ben ölmüş etine tenezzül eden karıncanın izzeti, nefsini sikeyim.",
+        "Sikilen maymun; ıhlamur ağacına çıkarmış, onun için mi ağaçtan inmiyorsun canım?",
+        "Şam şeytanı kılıklı engerek orospusu seni...",
+        "Yunan Anadolu'ya girse, bu pezevenk enişte diye boynuna sarılır.",
+        "Bana bak! Aklının sulu yerini sikerim senin.",
+        "Senin dalağını alır, açılan deliği sikerim.",
+        "Seni bir sikerim, bir hafta bulanık sıçarsın.",
+        "Senin bacağındaki kılı sikiyim.",
+        "Yalancıyı sikseler, senden hiç çıkarmazlardı.",
         "O elini götüne sokarım, sürahi gibi gezersin."
         ]
         
