@@ -105,6 +105,8 @@ async def help(ctx):
     embed.add_field(name="Economy Commands", value="balance, daily, steal, shop, toss, transfer, work")
     embed.add_field(name="Fun Commands", value="ara, bruh, bonk, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, warn, question")
     embed.add_field(name="Useful Commands", value="pfp, ping, poll, info, vote")
+    
+    await ctx.send(embed=embed)
 
 # Run the bot with a token specified via the command line or at the environment variable PATRI_DISCORD_TOKEN.
 if len(sys.argv) > 1:
