@@ -1,3 +1,4 @@
+from os import error
 import random
 import asyncpg
 import discord
@@ -158,7 +159,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	@commands.command()
 	@commands.cooldown(1, 864000, commands.BucketType.user)
-	async def steal(self, ctx, other_user: discord.Member, amount: int = None):
+	async def steal(self, ctx, other_user: discord.Member, amount: int = None,):
 		
 		Chance = random.randint(-10, 10)
 		thief = await self.get_user_account(ctx.message.author)
@@ -182,7 +183,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send("Stealing more than 150 beans is too risky! Just forget it...")
 			self.steal.reset_cooldown(ctx)
 			return	
-
+	
 		if victim.balance < amount:
 			await ctx.send("Come on! They are poor enough...")
 			self.steal.reset_cooldown(ctx)
@@ -206,8 +207,6 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send(embed=embed)
 		else:
 			raise error
-
-	#Gamble
 	
 	@commands.command()
 	@commands.cooldown(1, 600, commands.BucketType.user)
@@ -232,6 +231,33 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		else:
 			raise error
 
+	@commands.command()
+	@commands.cooldown(1, 864000, commands.BucketType.user)
+	async def daily(self, ctx):
+		account = await self.get_user_account(ctx.message.author)
+		beanz = [1, 50, 100, 200]
+		dailyv = random.choice(beanz)
+		account.add(dailyv)
+
+		embed = discord.Embed(title="Daily", description=f"I am a good bot. So I will give you  {dailyv} beans for today", color = ctx.author.color)
+		embed.set_thumbnail(url="https://img2.pngio.com/daily-png-4-png-image-daily-png-980_980.png")
+
+		await ctx.send(embed=embed)
+	@daily.error
+	async def daily_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			beg = "No!  \n Next beg will be avaible in: {:.2f}s".format(error.retry_after)
+			
+			embed = discord.Embed(title="It's called aily", description=f"{beg}", color = ctx.author.color)    
+			embed.set_thumbnail(url="https://img.icons8.com/ios/452/white-beans.png")
+			await ctx.send(embed=embed)
+		else:
+			raise error
+
+
+	
+	#Gamble
+	
 	@commands.command()
 	@commands.cooldown(5, 180, commands.BucketType.user)
 	async def flip(self, ctx, amount: int = None):
