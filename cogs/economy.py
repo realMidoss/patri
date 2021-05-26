@@ -246,15 +246,13 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@daily.error
 	async def daily_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
-			beg = "No!  \n Next beg will be avaible in: {:.2f}s".format(error.retry_after)
+			beg = "No!  \n Wait for: {:.2f}s".format(error.retry_after)
 			
-			embed = discord.Embed(title="It's called aily", description=f"{beg}", color = ctx.author.color)    
+			embed = discord.Embed(title="It's called Daily", description=f"{beg}", color = ctx.author.color)    
 			embed.set_thumbnail(url="https://img.icons8.com/ios/452/white-beans.png")
 			await ctx.send(embed=embed)
 		else:
 			raise error
-
-
 	
 	#Gamble
 	

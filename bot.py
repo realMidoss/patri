@@ -98,7 +98,7 @@ async def HeroFighte(ctx):
 @bot.group(invoke_without_command=True)
 async def help(ctx):
 
-    embed = discord.Embed(title="Patri Bot", description="Basic Fun Bot for GAM \n by Midoss", color = ctx.author.color)
+    embed = discord.Embed(title="Patri Bot", description="A Fun Bot for GAM \n Economy system by Jay  \n by Midoss", color = ctx.author.color)
     embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/762217890111029268.png?v=1")
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
