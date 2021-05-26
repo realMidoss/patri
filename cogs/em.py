@@ -151,7 +151,7 @@ class emCog(commands.Cog, name="Sub"):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def F(ctx):
+    async def F(self, ctx):
 
         Fv = [
         "https://i.kym-cdn.com/entries/icons/mobile/000/017/039/pressf.jpg",
