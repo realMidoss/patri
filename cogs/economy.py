@@ -3,6 +3,7 @@ import random
 import asyncpg
 import discord
 from discord import message
+from discord.colour import Color
 from discord.ext import commands, tasks
 import time
 
@@ -96,9 +97,13 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	#Personal
 
 	@commands.command()
-	async def balance(self, ctx):
+	async def bal(self, ctx):
 		balance = await self.get_user_account(ctx.message.author)
-		await ctx.send(f"You have {balance.balance} beans in the bank")
+		
+		embed = discord.Embed(title=f"Account ID={ctx.author.name}", description=f"You have {balance.balance} beans in the bank", color = ctx.author.color)
+		embed.set_thumbnail(url="https://image.flaticon.com/icons/png/512/173/173819.png")
+
+		await ctx.send(embed=embed)
 
 	@commands.command()
 	async def hax(self, ctx, user: discord.Member = None):
@@ -108,9 +113,11 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		elif user == ctx.message.author:
 			await ctx.send("Use balance command for your own ammount :P")
 			return
-		
 		balance = await self.get_user_account(user)
-		await ctx.send(f"{user.name} have {balance.balance} beans in the bank")
+		embed = discord.Embed(title=f"Account ID={user.name}", description=f"{user.name} has {balance.balance} beans in the bank", color = ctx.user.color)
+		embed.set_thumbnail(url="https://image.flaticon.com/icons/png/512/173/173819.png")	
+		
+		await ctx.send(embed=embed)
 
 	@commands.command()
 	async def transfer(self, ctx, other_user: discord.Member, amount: int = None):
@@ -130,6 +137,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		else:
 			source_account.remove(amount)
 			destination_account.add(amount)
+						
 			await ctx.send("Transaction complete")
 
 	#Self Commands
@@ -158,7 +166,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			raise error
 
 	@commands.command()
-	@commands.cooldown(1, 864000, commands.BucketType.user)
+	@commands.cooldown(1, 432000, commands.BucketType.user)
 	async def steal(self, ctx, other_user: discord.Member, amount: int = None,):
 		
 		Chance = random.randint(-10, 10)
@@ -200,7 +208,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@steal.error
 	async def steal_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
-			stl = "Gotta wait 24h \n I think you should wait for: {:.2f}s".format(error.retry_after)
+			stl = "Gotta wait 12h \n I think you should wait for: {:.2f}s".format(error.retry_after)
 			
 			embed = discord.Embed(title="Let's not...", description=f"{stl}", color = ctx.author.color)    
 			embed.set_thumbnail(url="https://pngimg.com/uploads/prison/prison_PNG45.png")
@@ -235,7 +243,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 	@commands.cooldown(1, 864000, commands.BucketType.user)
 	async def daily(self, ctx):
 		account = await self.get_user_account(ctx.message.author)
-		beanz = [1, 50, 100, 200]
+		beanz = [1, 50, 100, 200, 300]
 		dailyv = random.choice(beanz)
 		account.add(dailyv)
 
@@ -266,7 +274,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		account = await self.get_user_account(ctx.message.author)
 
 		if amount > account.balance:
-			await ctx.send("You don't have enough beans")
+			await ctx.send("OMG, you can't even affor that :D Why do you even bother?")
 			return
 
 		if random.randint(0,1) == 1:
@@ -304,7 +312,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		account = await self.get_user_account(ctx.message.author)
 
 		if amount > account.balance:
-			await ctx.send("You don't have enough beans")
+			await ctx.send("I knew that you were poor. But I though you had intelligence! Bro if you can't afford such a th,ng, why are you gambling?")
 			return
 
 		tossv = random.randint(-2*A, 2*A)		
@@ -337,7 +345,10 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		shop = [
 			{"name":"GAM Mug","price":100,"description":"A Mug for hot ones"},
 			{"name":"OC Figure of Mods","price":250,"description":"Show your love to best mods"},
-			{"name":"Body Pillow","price":500,"description":"For loners/cultured ones"}]   
+			{"name":"Body Pillow","price":500,"description":"For loners/cultured ones"},
+			{"name":"Airsoft Gun","price":10000,"description":"We azre not licanced to sell real one"},
+			{"name":"Panzerkampfwagen V","price":1000000,"description":"German Engineering wonder"},
+			{"name":"F-35","price":10000000,"description":"World current best jet"}]   
 		em = discord.Embed(title = "Shop")
 
 		for item in shop:
@@ -347,7 +358,9 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			em.add_field(name = name, value = f"{price} BEANS | {desc}")
 
 		await ctx.send(embed = em)
- 
+
+	#Don't touch rest	
+
 	@commands.command()
 	async def add(self, ctx, amount:int, target:discord.Member):
 		if await self.bot.is_owner(ctx.message.author):
