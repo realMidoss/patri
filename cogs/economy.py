@@ -114,7 +114,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send("Use balance command for your own ammount :P")
 			return
 		balance = await self.get_user_account(user)
-		embed = discord.Embed(title=f"Account ID={user.name}", description=f"{user.name} has {balance.balance} beans in the bank", color = ctx.user.color)
+		embed = discord.Embed(title=f"Account ID={user.name}", description=f"{user.name} has {balance.balance} beans in the bank", color=discord.Color.red())
 		embed.set_thumbnail(url="https://image.flaticon.com/icons/png/512/173/173819.png")	
 		
 		await ctx.send(embed=embed)
