@@ -166,7 +166,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			raise error
 
 	@commands.command()
-	@commands.cooldown(1, 432000, commands.BucketType.user)
+	@commands.cooldown(1, 43200, commands.BucketType.user)
 	async def steal(self, ctx, other_user: discord.Member, amount: int = None,):
 		
 		Chance = random.randint(-10, 10)
