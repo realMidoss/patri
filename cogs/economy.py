@@ -248,7 +248,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		account.add(dailyv)
 
 		embed = discord.Embed(title="Daily", description=f"I am a good bot. So I will give you  {dailyv} beans for today", color = ctx.author.color)
-		embed.set_thumbnail(url="https://img2.pngio.com/daily-png-4-png-image-daily-png-980_980.png")
+		embed.set_thumbnail(url="https://image.flaticon.com/icons/png/512/17/17538.png")
 
 		await ctx.send(embed=embed)
 	@daily.error
