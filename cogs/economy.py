@@ -57,7 +57,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		self.commit_updates_to_db.cancel()
 
 	async def cog_before_invoke(self, ctx):
-		if not self.is_connected:
+		if not self.is_connected or self.conn.is_closed():
 			# connect to the database
 			self.conn = await asyncpg.connect(self.db_url)
 			
