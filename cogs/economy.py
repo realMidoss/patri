@@ -96,8 +96,8 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	#Personal
 
-	@commands.command()
-	async def bal(self, ctx):
+	@commands.command(aliases=["bal"])
+	async def balance(self, ctx):
 		balance = await self.get_user_account(ctx.message.author)
 		
 		embed = discord.Embed(title=f"Account ID={ctx.author.name}", description=f"You have {balance.balance} beans in the bank", color = ctx.author.color)
