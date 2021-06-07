@@ -278,7 +278,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		account.add(advv)
 
 		if advv < 0:
-			embed = discord.Embed(title="Adventure Time!", description=f"Sadly you couldn't find anything and hurt yourself, Hospital bill costed {advv} beans")
+			embed = discord.Embed(title="Adventure Time!", description=f"Sadly you couldn't find anything and hurt yourself, Hospital bill costed {abs(advv)} beans")
 			embed.set_thumbnail(url="https://img.pngio.com/medic-png-3-png-image-medic-png-600_600.png")
 			await ctx.send(embed=embed)
 		else:
@@ -291,7 +291,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			ad = "You have to rest!  \n Wait for: {:.2f}s".format(error.retry_after)
 			
 			embed = discord.Embed(title="An Adventurer needs rest", description=f"{ad}", color = ctx.author.color)    
-			embed.set_thumbnail(url="https://icon2.cleanpng.com/20180205/otq/kisspng-viking-sword-shield-weapon-sword-shield-png-pic-5a7918e485de54.9837911315178856685483.jpg")
+			embed.set_thumbnail(url="https://static.thenounproject.com/png/1208310-200.png")
 			await ctx.send(embed=embed)
 		else:
 			raise error
@@ -357,7 +357,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			account.add(tossv)
 			await ctx.send(embed=embed)
 		else:
-			embed = discord.Embed(title="Toss!", description=f"Ah unlucky... You lost {tossv} beans", color = ctx.author.color)
+			embed = discord.Embed(title="Toss!", description=f"Ah unlucky... You lost {abs(tossv)} beans", color = ctx.author.color)
 			embed.set_thumbnail(url="https://www.pngrepo.com/download/261646/coin-flip.png")
 			account.remove(abs(tossv))
 			await ctx.send(embed=embed)
