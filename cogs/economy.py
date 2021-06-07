@@ -6,6 +6,7 @@ from discord import message
 from discord.colour import Color
 from discord.ext import commands, tasks
 import time
+from discord.ext.commands.core import command
 
 from discord.ext.commands.errors import MemberNotFound
 
@@ -263,6 +264,33 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			
 			embed = discord.Embed(title="It's called Daily", description=f"{beg}", color = ctx.author.color)    
 			embed.set_thumbnail(url="https://img.icons8.com/ios/452/white-beans.png")
+			await ctx.send(embed=embed)
+		else:
+			raise error
+
+	@commands.command()
+	@commands.cooldown(1, 1800, commands.BucketType.user)
+	async def adventure(self, ctx):
+		account = await self.get_user_account(ctx.message.author)
+		adv = [-100, -50, 50, 100, 200, 300]
+		advv = random.choice(adv)
+		account.add(advv)
+
+		if advv < 0:
+			embed = discord.Embed(title="Adventure Time!", description=f"Sadly you couldn't find anything and hurt yourself, Hospital bill costed {advv} beans")
+			embed.set_thumbnail(url="https://img.pngio.com/medic-png-3-png-image-medic-png-600_600.png")
+			await ctx.send(embed=embed)
+		else:
+			embed = discord.Embed(title="Adventure Time!", description=f"You went out for and adventure and found {advv} beans worth of tressure", color = ctx.author.color)
+			embed.set_thumbnail(url="https://image.flaticon.com/icons/png/512/17/17538.png")
+			await ctx.send(embed=embed)
+	@adventure.error
+	async def adventure_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			ad = "You have to rest!  \n Wait for: {:.2f}s".format(error.retry_after)
+			
+			embed = discord.Embed(title="It's called Daily", description=f"{ad}", color = ctx.author.color)    
+			embed.set_thumbnail(url="https://icon2.cleanpng.com/20180205/otq/kisspng-viking-sword-shield-weapon-sword-shield-png-pic-5a7918e485de54.9837911315178856685483.jpg")
 			await ctx.send(embed=embed)
 		else:
 			raise error
