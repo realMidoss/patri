@@ -282,7 +282,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send(embed=embed)
 		else:
 			embed = discord.Embed(title="Adventure Time!", description=f"You went out for and adventure and found {advv} beans worth of tressure", color = ctx.author.color)
-			embed.set_thumbnail(url="https://image.flaticon.com/icons/png/512/17/17538.png")
+			embed.set_thumbnail(url="https://library.kissclipart.com/20180918/arw/kissclipart-jungle-trekking-icon-clipart-hiking-backpacking-cl-fec82ecf53f072d7.png")
 			await ctx.send(embed=embed)
 	@adventure.error
 	async def adventure_error(self, ctx, error):
