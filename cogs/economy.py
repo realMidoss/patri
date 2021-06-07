@@ -9,6 +9,9 @@ import time
 
 from discord.ext.commands.errors import MemberNotFound
 
+# Stolen from https://stackoverflow.com/a/20007730. Thanks!
+ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n//10%10!=1)*(n%10<4)*n%10::4])
+
 class UserBeanAccount:
 	def __init__(self, user, balance):
 		self.user = user
@@ -52,6 +55,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		self.account_cache = {}
 		self.commit_updates_to_db.add_exception_type(asyncpg.PostgresConnectionError)
 		self.is_connected = False
+		self.leaderboard_embed = None
 
 	def cog_unload(self):
 		self.commit_updates_to_db.cancel()
@@ -69,6 +73,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			""")
 
 			# set the connected flag
+			print("Connected to the DB!")
 			self.is_connected = True
 			self.commit_updates_to_db.start()
 
@@ -358,6 +363,61 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			em.add_field(name = name, value = f"{price} BEANS | {desc}")
 
 		await ctx.send(embed = em)
+
+	async def fetch_leaderboard(self):
+		top_10 = await self.conn.fetch("""
+			SELECT (discord_snowflake)
+			FROM beans_balance
+			ORDER BY beans DESC
+			LIMIT 10
+		""")
+
+		description = ""
+		place = 1
+
+		for record in top_10:
+			# for if we ever want to show the beans values on the leaderboard.
+			# the beans will be out of date due to the way we cache the embed.
+			"""
+			row = record['row']
+			username = "Invalid User"
+			user_snowflake = row[0]
+			beans = row[1]
+			"""
+
+			user_snowflake = record['discord_snowflake']
+			user = self.bot.get_user(user_snowflake)
+
+			if user is None:
+				try:
+					user = await self.bot.fetch_user(user_snowflake)
+				except:
+					user = None
+
+			if not user is None:
+				username = user.name
+
+			description += f"**{ordinal(place)}**: {username}\n"
+			place += 1
+
+		self.leaderboard_embed = discord.Embed(title = "Beans Leaderboard", description = description, color = discord.Color.red())
+
+	@commands.command()
+	@commands.cooldown(1, 180, commands.BucketType.default)
+	async def leaderboard(self, ctx):
+		await self.fetch_leaderboard()
+		await ctx.send(embed=self.leaderboard_embed)
+		
+	@leaderboard.error
+	async def leaderboard_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			# If we mananged to get into the cooldown without having an embed generated, make sure we still generate it.
+			if self.leaderboard_embed is None:
+				await self.fetch_leaderboard()
+			
+			await ctx.send(embed=self.leaderboard_embed)
+		else:
+			raise error
 
 	#Don't touch rest	
 
