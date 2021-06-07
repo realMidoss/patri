@@ -289,7 +289,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		if isinstance(error, commands.CommandOnCooldown):
 			ad = "You have to rest!  \n Wait for: {:.2f}s".format(error.retry_after)
 			
-			embed = discord.Embed(title="It's called Daily", description=f"{ad}", color = ctx.author.color)    
+			embed = discord.Embed(title="An Adventurer needs rest", description=f"{ad}", color = ctx.author.color)    
 			embed.set_thumbnail(url="https://icon2.cleanpng.com/20180205/otq/kisspng-viking-sword-shield-weapon-sword-shield-png-pic-5a7918e485de54.9837911315178856685483.jpg")
 			await ctx.send(embed=embed)
 		else:
