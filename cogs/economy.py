@@ -7,6 +7,7 @@ from discord.colour import Color
 from discord.ext import commands, tasks
 import time
 from discord.ext.commands.core import command
+from datetime import date, datetime
 
 from discord.ext.commands.errors import MemberNotFound
 
@@ -394,7 +395,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 
 	async def fetch_leaderboard(self):
 		top_10 = await self.conn.fetch("""
-			SELECT (discord_snowflake)
+			SELECT (discord_snowflake, beans)
 			FROM beans_balance
 			ORDER BY beans DESC
 			LIMIT 10
@@ -404,16 +405,11 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 		place = 1
 
 		for record in top_10:
-			# for if we ever want to show the beans values on the leaderboard.
-			# the beans will be out of date due to the way we cache the embed.
-			"""
 			row = record['row']
 			username = "Invalid User"
 			user_snowflake = row[0]
 			beans = row[1]
-			"""
 
-			user_snowflake = record['discord_snowflake']
 			user = self.bot.get_user(user_snowflake)
 
 			if user is None:
@@ -425,10 +421,10 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			if not user is None:
 				username = user.name
 
-			description += f"**{ordinal(place)}**: {username}\n"
+			description += f"**{ordinal(place)}**: {username} ({beans})\n"
 			place += 1
 
-		self.leaderboard_embed = discord.Embed(title = "Beans Leaderboard", description = description, color = discord.Color.red())
+		self.leaderboard_embed = discord.Embed(title = "Beans Leaderboard", description = description, color = discord.Color.red(), timestamp = datetime.utcnow())
 
 	@commands.command()
 	@commands.cooldown(1, 180, commands.BucketType.default)
