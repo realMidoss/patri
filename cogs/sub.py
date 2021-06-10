@@ -98,7 +98,7 @@ class subCog(commands.Cog, name="Sub"):
             embed.add_field(name="My answer is...", value="Joe mama!")
             embed.set_thumbnail(url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCtMzoeQ8IGRoiYslQrnccanwkl7DtAJXTTQ&usqp=CAU")
             await ctx.send(embed=embed)
-
+            await ctx.message.delete()
             return
     
         embed = discord.Embed(title=f"{ctx.author.name} asks for my wisdom!", description=f"{arg}", color = discord.Color.blue())
@@ -106,6 +106,7 @@ class subCog(commands.Cog, name="Sub"):
         embed.set_thumbnail(url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCtMzoeQ8IGRoiYslQrnccanwkl7DtAJXTTQ&usqp=CAU")
         
         await ctx.send(embed=embed)
+        await ctx.message.delete()
 
     @commands.command()
     async def info(self, ctx):
