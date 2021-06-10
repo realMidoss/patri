@@ -8,7 +8,7 @@ import asyncio
 class subCog(commands.Cog, name="Sub"):
     def _init_(self, bot):self.bot = bot
 
-    @commands.command()
+    @commands.command(pass_context=True)
     async def poll(self, ctx, *, arg):
         
         yas = '✔️' 
@@ -22,9 +22,10 @@ class subCog(commands.Cog, name="Sub"):
         await message.add_reaction(yas)
         await message.add_reaction(idk)
         await message.add_reaction(nay)   
+        await ctx.message.delete()
 
-    @commands.command()
-    async def vote(self, ctx, *, arg):
+    @commands.command(pass_context=True)
+    async def vote(self, ctx, *, arg = None):
 
         one = '1️⃣'
         two = '2️⃣'
@@ -42,24 +43,29 @@ class subCog(commands.Cog, name="Sub"):
             await ctx.send('You need at least two options to make a poll!')
         elif last > 5:
             await ctx.send("You can't add more than 5 choices")
+            await ctx.message.delete()
         elif last == 2:
             await message.add_reaction(one)
             await message.add_reaction(two)
+            await ctx.message.delete()
         elif last == 3:
             await message.add_reaction(one)
             await message.add_reaction(two)
             await message.add_reaction(three)
+            await ctx.message.delete()
         elif last == 4:
             await message.add_reaction(one)
             await message.add_reaction(two)
             await message.add_reaction(three)
             await message.add_reaction(four)
+            await ctx.message.delete()
         elif last == 5:
             await message.add_reaction(one)
             await message.add_reaction(two)
             await message.add_reaction(three)
             await message.add_reaction(four)
             await message.add_reaction(five)
+            await ctx.message.delete()
  
     @commands.command()
     async def pfp(self, ctx, user:discord.Member = None):
