@@ -75,7 +75,7 @@ async def nuke(ctx):
     await ctx.send("Progress Abondoned...") 
     
 @bot.command()
-async def ban(ctx, victim:discord.Member, reason= None):
+async def ban(ctx, victim:discord.Member, *, reason= None):
     
     yas = '✔️'
     nay = '❌'
