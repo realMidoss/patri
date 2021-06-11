@@ -73,6 +73,37 @@ async def nuke(ctx):
         return await ctx.send(embed=embed)
     
     await ctx.send("Progress Abondoned...") 
+    
+@bot.command()
+async def ban(ctx, user:discord.Member, *, arg):
+    
+    yas = '✔️'
+    nay = '❌'
+    
+    embed = discord.Embed(title="Do you wish to ban this user?", color=discord.Color.dark_red())
+    embed.add_field(name=f"Victim: {user.name}", value="Say goodbye madafaka...")
+    embed.set_thumbnail(url=ctx.user.avatar_url)
+    message = await ctx.send(embed=embed)
+
+    
+    await message.add_reaction(yas)
+    await message.add_reaction(nay)
+    
+    valid_reactions = ['✔️', '❌']
+    
+    def check(reaction, user):
+        return user == ctx.author and str(reaction.emoji) in valid_reactions
+    try:
+        reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
+    except asyncio.TimeoutError:
+        await ctx.send("Forgiven")
+    
+    if str(reaction.emoji) == yas:
+        embed = discord.Embed(title=f"Code: 31 Activated, Goodbye {user.name}...", description=f"{ctx.author.name} banned them. Reason: {arg}", color=discord.Color.dark_red())
+        embed.set_image(url="https://i.hizliresim.com/jhtoav1.")
+        return await ctx.send(embed=embed)
+    
+    await ctx.send("Progress Abondoned...") 
 
 @bot.command()
 async def HeroFighte(ctx):
@@ -103,7 +134,7 @@ async def help(ctx):
     
     embed.add_field(name="help", value="you used it already, didnt ya?", inline=False)
     embed.add_field(name="Economy Commands", value="adventure, bal, daily, leaderboard, steal, hax, shop, toss, transfer, work")
-    embed.add_field(name="Fun Commands", value="ara, bruh, bonk, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, warn, question")
+    embed.add_field(name="Fun Commands", value="ara, ban, bruh, bonk, bully, declarecommunism, F, hug, invade, kick, kill, kiss, lap, marry, nuke, pat, say, suck, warn, question")
     embed.add_field(name="Useful Commands", value="pfp, ping, poll, info, vote")
     
     await ctx.send(embed=embed)
