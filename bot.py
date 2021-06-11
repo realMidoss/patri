@@ -75,14 +75,17 @@ async def nuke(ctx):
     await ctx.send("Progress Abondoned...") 
     
 @bot.command()
-async def ban(ctx, user:discord.Member, *, arg):
+async def ban(ctx, victim:discord.Member, reason= None):
     
     yas = '✔️'
     nay = '❌'
+
+    if reason is None:
+        reason = "Reason unspecified"
     
     embed = discord.Embed(title="Do you wish to ban this user?", color=discord.Color.dark_red())
-    embed.add_field(name=f"Victim: {user.name}", value="Say goodbye madafaka...")
-    embed.set_thumbnail(url=ctx.user.avatar_url)
+    embed.add_field(name=f"Victim: {victim.name}", value="Say goodbye madafaka...")
+    embed.set_thumbnail(url=victim.avatar_url)
     message = await ctx.send(embed=embed)
 
     
@@ -96,14 +99,14 @@ async def ban(ctx, user:discord.Member, *, arg):
     try:
         reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
     except asyncio.TimeoutError:
-        await ctx.send("Forgiven")
+        await ctx.send("Time out")
     
     if str(reaction.emoji) == yas:
-        embed = discord.Embed(title=f"Code: 31 Activated, Goodbye {user.name}...", description=f"{ctx.author.name} banned them. Reason: {arg}", color=discord.Color.dark_red())
-        embed.set_image(url="https://i.hizliresim.com/jhtoav1.")
+        embed = discord.Embed(title=f"Code: 31 Activated, Goodbye {victim.name}...", description=f"{ctx.author.name} banned them. \n\n **Reason:** {reason}", color=discord.Color.dark_red())
+        embed.set_image(url="https://media1.tenor.com/images/11baffb759ae7ca9d984153cf53a7768/tenor.gif?itemid=8540510")
         return await ctx.send(embed=embed)
     
-    await ctx.send("Progress Abondoned...") 
+    await ctx.send("Forgiven") 
 
 @bot.command()
 async def HeroFighte(ctx):
