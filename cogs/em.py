@@ -9,8 +9,18 @@ class emCog(commands.Cog, name="Sub"):
 
     @commands.command()
     async def invade(self, ctx):
+
+        ww2 = [
+        "https://thumbs.gfycat.com/AdventurousUnknownFiddlercrab-size_restricted.gif",
+        "https://i.hizliresim.com/XRlk5m.jpg",      
+        "https://media1.tenor.com/images/3429b07976597362b241a26f3e4aae44/tenor.gif?itemid=16949276", 
+        "https://i.makeagif.com/media/8-03-2015/6BUOZw.gif", 
+        "https://thumbs.gfycat.com/GentleCostlyDevilfish-max-1mb.gif",
+        "https://thumbs.gfycat.com/WelloffAdventurousArkshell-size_restricted.gif"  
+        ]
+
         embed = discord.Embed(title="Für Das Vaterland", description="Über Alles!", color=discord.Color.red())
-        embed.set_image(url="https://i.hizliresim.com/XRlk5m.jpg")
+        embed.set_image(url=random.choice(ww2))
 
         await ctx.send(embed=embed)
 
