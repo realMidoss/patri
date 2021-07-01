@@ -349,7 +349,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			await ctx.send("I knew that you were poor. But I though you had intelligence! Bro if you can't afford such a th,ng, why are you gambling?")
 			return
 
-		tossv = random.randint(-2*A, 2*A)		
+		tossv = random.randint(-2*A, 3*A)		
 		
 		if tossv >0:
 			embed=discord.Embed(title="Toss!", description=f"You are lucky! You just won {tossv} beans", color = ctx.author.color)
