@@ -282,7 +282,7 @@ class BeansEconomyCog(commands.Cog, name='BeansV2'):
 			embed.set_thumbnail(url="https://img.pngio.com/medic-png-3-png-image-medic-png-600_600.png")
 			await ctx.send(embed=embed)
 		else:
-			embed = discord.Embed(title="Adventure Time!", description=f"You went out for and adventure and found {advv} beans worth of treasure", color = ctx.author.color)
+			embed = discord.Embed(title="Adventure Time!", description=f"You went out for and adventure and found {advv} beans worth of tressure", color = ctx.author.color)
 			embed.set_thumbnail(url="https://library.kissclipart.com/20180918/arw/kissclipart-jungle-trekking-icon-clipart-hiking-backpacking-cl-fec82ecf53f072d7.png")
 			await ctx.send(embed=embed)
 	@adventure.error

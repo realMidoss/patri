@@ -1,15 +1,14 @@
 # Patri Bot - Powered by Heroku
 
 A bot that I made for python practice
-this BOT was designed for GAM Discord server 
+this BOT designed for GAM Discord server 
 And my first ever codding project
 
-Features of Patri:
+Targets of prohect (Still ongoing):
 
-* Bean Economy System
-* Anime reactions to eachother
-* meme commands
-* fake moderation commands
+1. Making an economy system and a leaderboard
+2. Seting a Database
+3. Writing code in a clean way
 
 Thanks to Forg, Jaymo, Luna and Prefix 
 
